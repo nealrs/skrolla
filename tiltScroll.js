@@ -13,23 +13,29 @@ gyro.frequency = 300; // polling frequency
 var scrollFlag = 0; // this flag determines whether (1) or not (0) tiltScroll is enabled.
 var debug = false; // false off, true on (and red is down, blue is up)
 
+var datum = 45; // scroll datum & trigger boundaries
+var u1 = 3;
+var u2 = 15;
+var d1 = -5;
+var d2 = -25;
+
 gyro.startTracking(function(o) {
 
-	var b0 = 45; // 45 deg datum
+	var b0 = datum; // 45 deg datum
 	var b1 = o.beta;	
 	var db = b1 - b0;
 
-	var g0 = -45; 
+	var g0 = -datum; 
 	var g1 = o.gamma;	
 	var dg = g1 - g0;
 
 	// set angular bounds for up & down scroll zones with a 45 degree 'baseline' - see chart in readme
-	if (((db > 3 && db < 15) || (dg < -5 && dg > -25)) && scrollFlag > 0) { 
+	if (((db > u1 && db < u2) || (dg < d1 && dg > d2)) && scrollFlag > 0) { 
 		tiltScroll(-25);		// SCROLL UP
 		if (debug){scrollDebug("blue");}
 		scrollIndicator(0);
 	
-	} else if (((db < -5 && db > -25) || (dg > 3 && dg < 15)) && scrollFlag > 0) { 
+	} else if (((db < d1 && db > d2) || (dg > u1 && dg < u2)) && scrollFlag > 0) { 
 			tiltScroll(25); 	// SCROLL DOWN
 			if (debug){scrollDebug("red");}
 			scrollIndicator(1);

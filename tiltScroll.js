@@ -41,26 +41,29 @@ gyro.startTracking(function(o) {
 function tiltScroll(y) {window.scrollBy(0,y);}
 
 function scrollDebug(c) {
-	var allP = document.getElementsByTagName('p');	
+	$('p').css( "color", c);
+	
+	/*var allP = document.getElementsByTagName('p');
 	for (var i=0; i < allP.length; i++ ) {
 		allP[i].style.color = c;
-	}
+	}*/
 }
 
 function enableScroll(){
 	scrollFlag = 1;
-
+ 	
  	document.getElementById('sStatus').innerHTML="ON";
  	document.getElementById('sStatus').style.color="green";
  	
  	document.getElementById('eScroll').disabled = true;
  	document.getElementById('dScroll').disabled = false;
+ 	
 } 
 
 function disableScroll(){
 	scrollFlag = 0;
 	scrollDebug("black");
-	
+ 	
  	document.getElementById('sStatus').innerHTML="OFF";
  	document.getElementById('sStatus').style.color="maroon";
  	
@@ -68,6 +71,6 @@ function disableScroll(){
  	document.getElementById('dScroll').disabled = true;
 }
 
-//$(document).ready(function() {	
+$(document).ready(function() {	
 	enableScroll();
-//});
+});

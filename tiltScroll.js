@@ -1,6 +1,6 @@
 /* ====================================================================================
 tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
-> Depends gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license]
+> Depends on jQuery & gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license]
 
 (The MIT License)
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -11,7 +11,7 @@ tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 ///////////////////////////////////////////////////////////////////////////////////////
 gyro.frequency = 300; // polling frequency
 var scrollFlag = 0; // this flag determines whether (1) or not (0) things scroll
-var debug = true; // false is off, true is on
+var debug = false; // false is off, true is on (red is down, blue is up)
 
 gyro.startTracking(function(o) {
 
@@ -27,12 +27,15 @@ gyro.startTracking(function(o) {
 	if (((db > 3 && db < 15) || (dg < -5 && dg > -25)) && scrollFlag > 0) { 
 		tiltScroll(-25);		// SCROLL UP
 		if (debug){scrollDebug("blue");}
+		scrollIndicator(0);
 	
 	} else if (((db < -5 && db > -25) || (dg > 3 && dg < 15)) && scrollFlag > 0) { 
 			tiltScroll(25); 	// SCROLL DOWN
-			if (debug){scrollDebug("red");}			
+			if (debug){scrollDebug("red");}
+			scrollIndicator(1);
 	
 		}	else {
+				scrollIndicator(-1);
 				if (debug) {scrollDebug("black");}
 			}		
 });
@@ -69,6 +72,12 @@ function disableScroll(){
  	
  	document.getElementById('eScroll').disabled = false;
  	document.getElementById('dScroll').disabled = true;
+}
+
+function scrollIndicator(dir){
+	if (dir > 0){document.getElementById('sIndicator').innerHTML="DOWN";}
+	else if (dir == 0){document.getElementById('sIndicator').innerHTML="UP";}
+	else {document.getElementById('sIndicator').innerHTML="------";}
 }
 
 $(document).ready(function() {	

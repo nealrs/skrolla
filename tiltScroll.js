@@ -10,8 +10,8 @@ tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 
 ///////////////////////////////////////////////////////////////////////////////////////
 gyro.frequency = 300; // polling frequency
-var scrollFlag = 0; // this flag determines whether (1) or not (0) things scroll
-var debug = false; // false is off, true is on (red is down, blue is up)
+var scrollFlag = 0; // this flag determines whether (1) or not (0) tiltScroll is enabled.
+var debug = false; // false off, true on (and red is down, blue is up)
 
 gyro.startTracking(function(o) {
 
@@ -55,29 +55,22 @@ function scrollDebug(c) {
 function enableScroll(){
 	scrollFlag = 1;
  	
- 	document.getElementById('sStatus').innerHTML="ON";
- 	document.getElementById('sStatus').style.color="green";
- 	
- 	document.getElementById('eScroll').disabled = true;
- 	document.getElementById('dScroll').disabled = false;
- 	
+ 	document.getElementById('eScroll').innerHTML="<i class='fa fa-circle fa-fw'></i> ON";
+ 	document.getElementById('dScroll').innerHTML="<i class='fa fa-circle-o fa-fw'></i> OFF";
 } 
 
 function disableScroll(){
 	scrollFlag = 0;
 	scrollDebug("black");
  	
- 	document.getElementById('sStatus').innerHTML="OFF";
- 	document.getElementById('sStatus').style.color="maroon";
- 	
- 	document.getElementById('eScroll').disabled = false;
- 	document.getElementById('dScroll').disabled = true;
+ 	document.getElementById('eScroll').innerHTML="<i class='fa fa-circle-o fa-fw'></i> ON";
+ 	document.getElementById('dScroll').innerHTML="<i class='fa fa-circle fa-fw'></i> OFF";
 }
 
 function scrollIndicator(dir){
-	if (dir > 0){document.getElementById('sIndicator').innerHTML="DOWN";}
-	else if (dir == 0){document.getElementById('sIndicator').innerHTML="UP";}
-	else {document.getElementById('sIndicator').innerHTML="------";}
+	if (dir > 0){document.getElementById('sIndicator').innerHTML="<i class='fa fa-long-arrow-down fa-fw'></i>";}
+	else if (dir == 0){document.getElementById('sIndicator').innerHTML="<i class='fa fa-long-arrow-up fa-fw'></i>";}
+	else {document.getElementById('sIndicator').innerHTML="<i class='fa fa-fw'></i>";}
 }
 
 $(document).ready(function() {	

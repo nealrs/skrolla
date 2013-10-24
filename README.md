@@ -10,7 +10,7 @@ works on iPhone & Android phones (well at least it does on the 4s, 5, 5s, and gs
 Quickstart
 ------------
 
-Include jquery, gyro.min.js, and tiltScroll.js in your head block & edit tiltScroll.js params as desired.
+Include gyro.min.js, and tiltScroll.js in your head block & edit tiltScroll.js params as desired.
 
 ```
 <head>

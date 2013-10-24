@@ -1,6 +1,6 @@
 /* ====================================================================================
 tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
-> Depends on jquery (for debug) & gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license]
+> Depends gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license]
 
 (The MIT License)
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -10,7 +10,8 @@ tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 
 ///////////////////////////////////////////////////////////////////////////////////////
 gyro.frequency = 300; // polling frequency
-var scrollFlag = 0; // this flag determines whether or not things scroll.
+var scrollFlag = 0; // this flag determines whether (1) or not (0) things scroll
+var debug = true; // false is off, true is on
 
 gyro.startTracking(function(o) {
 
@@ -25,23 +26,22 @@ gyro.startTracking(function(o) {
 	// set angular bounds for up & down scroll zones with a 45 degree 'baseline' - see chart in readme
 	if (((db > 3 && db < 15) || (dg < -5 && dg > -25)) && scrollFlag > 0) { 
 		tiltScroll(-25);		// SCROLL UP
-		scrollDebug("blue"); 
+		if (debug){scrollDebug("blue");}
 	
 	} else if (((db < -5 && db > -25) || (dg > 3 && dg < 15)) && scrollFlag > 0) { 
 			tiltScroll(25); 	// SCROLL DOWN
-			scrollDebug("red");			
+			if (debug){scrollDebug("red");}			
 	
-		}	else {scrollDebug("black");}		
+		}	else {
+				if (debug) {scrollDebug("black");}
+			}		
 });
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function tiltScroll(y) {window.scrollBy(0,y);}
 
 function scrollDebug(c) {
-	//$('p').css( "color", c);
-	
-	var allP = document.getElementsByTagName('p');
-	
+	var allP = document.getElementsByTagName('p');	
 	for (var i=0; i < allP.length; i++ ) {
 		allP[i].style.color = c;
 	}

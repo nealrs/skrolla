@@ -2,10 +2,10 @@
 <head>
 <title>tiltScroll</title>
 
-<!-- ================================================================================= -->	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="gyro.min.js"></script>
 <script src="tiltScroll.js"></script>
+<script src="xframe.min.js"></script>
 <link href="tiltScroll.css" rel="stylesheet">
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 	<div id = "sHead">
 		<a href="#" title="Share this" target="_blank"><i class="fa fa-share fa-fw"></i></a>&nbsp;&nbsp; 
 		tiltScroll&nbsp;&nbsp;
@@ -20,26 +21,18 @@
 		<span id="scrollOff" onclick="enableScroll()"><i class='fa fa-circle-o fa-fw'></i>&nbsp;off</span>&nbsp;
 		<span id="sIndicator"></span>
 	</div>
-<!-- ================================================================================= -->	
 
-	<div class="frame">
-	 <p style="text-align:center;">
-	 	Tilt to scroll. Inspired by <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" title="git -at me" target="_blank">git -at me</a>.<br>
-	 	<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png" title="tiltScroll trigger boundaries" alt="tiltScroll trigger boundaries">
-	 </p>
-	 
-	 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla lorem, dapibus eu velit vitae, hendrerit interdum massa. Sed mattis lorem ante, nec convallis nulla pretium ac. Proin tortor lorem, vestibulum eu ligula non, accumsan vestibulum odio. Integer varius tristique suscipit. Mauris ut nisl et velit elementum viverra. Vestibulum eleifend massa at ligula facilisis molestie. Maecenas massa justo, rhoncus ac posuere in, iaculis sit amet elit. In dignissim faucibus lectus, ac blandit libero porta non. Aenean dui ipsum, dignissim vel nulla a, viverra ultricies est. Aenean id libero vitae tortor rutrum iaculis sit amet a turpis. Vivamus accumsan egestas augue, consequat sollicitudin lectus sollicitudin eu. Sed feugiat risus turpis, vel lobortis ligula interdum vel. Pellentesque pretium metus eros, sed sodales mi tempor at. Cras commodo, tellus eget aliquam ullamcorper, arcu eros ullamcorper tortor, id mollis lectus mauris et lacus.</p>
-	 <p>Nulla quis lectus id nisi vulputate adipiscing. Vivamus sit amet placerat nisi, sit amet ullamcorper lorem. Quisque consectetur lobortis est, non sagittis purus consectetur semper. Vestibulum cursus dapibus neque quis venenatis. Pellentesque vitae augue vel sem commodo tristique at sit amet urna. Nulla consequat risus in rutrum interdum. Aliquam sit amet elit eu lacus accumsan fermentum eget sed urna. Cras at elit nec orci facilisis egestas. Curabitur ac risus dictum, bibendum sapien non, fringilla nulla. Donec magna leo, condimentum id ante non, scelerisque consectetur eros. Suspendisse potenti. Maecenas vulputate ultricies arcu auctor sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	 <p>Aliquam et lorem sagittis, porta mi at, iaculis nibh. Nam vitae elit ut tortor mollis tincidunt. Nunc iaculis dui a aliquet venenatis. Duis sit amet dui non diam adipiscing iaculis. Aliquam erat volutpat. Fusce faucibus euismod turpis sed tempor. Morbi facilisis id purus in ultrices. Maecenas convallis interdum nibh, nec scelerisque ipsum sagittis at. Vivamus non cursus arcu. Pellentesque sagittis tellus massa, eu laoreet justo bibendum a. Ut ut diam consectetur, gravida augue eu, convallis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Suspendisse tincidunt tellus et dignissim aliquam.</p>
-	 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla lorem, dapibus eu velit vitae, hendrerit interdum massa. Sed mattis lorem ante, nec convallis nulla pretium ac. Proin tortor lorem, vestibulum eu ligula non, accumsan vestibulum odio. Integer varius tristique suscipit. Mauris ut nisl et velit elementum viverra. Vestibulum eleifend massa at ligula facilisis molestie. Maecenas massa justo, rhoncus ac posuere in, iaculis sit amet elit. In dignissim faucibus lectus, ac blandit libero porta non. Aenean dui ipsum, dignissim vel nulla a, viverra ultricies est. Aenean id libero vitae tortor rutrum iaculis sit amet a turpis. Vivamus accumsan egestas augue, consequat sollicitudin lectus sollicitudin eu. Sed feugiat risus turpis, vel lobortis ligula interdum vel. Pellentesque pretium metus eros, sed sodales mi tempor at. Cras commodo, tellus eget aliquam ullamcorper, arcu eros ullamcorper tortor, id mollis lectus mauris et lacus.</p>
-	 <p>Nulla quis lectus id nisi vulputate adipiscing. Vivamus sit amet placerat nisi, sit amet ullamcorper lorem. Quisque consectetur lobortis est, non sagittis purus consectetur semper. Vestibulum cursus dapibus neque quis venenatis. Pellentesque vitae augue vel sem commodo tristique at sit amet urna. Nulla consequat risus in rutrum interdum. Aliquam sit amet elit eu lacus accumsan fermentum eget sed urna. Cras at elit nec orci facilisis egestas. Curabitur ac risus dictum, bibendum sapien non, fringilla nulla. Donec magna leo, condimentum id ante non, scelerisque consectetur eros. Suspendisse potenti. Maecenas vulputate ultricies arcu auctor sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	 <p>Aliquam et lorem sagittis, porta mi at, iaculis nibh. Nam vitae elit ut tortor mollis tincidunt. Nunc iaculis dui a aliquet venenatis. Duis sit amet dui non diam adipiscing iaculis. Aliquam erat volutpat. Fusce faucibus euismod turpis sed tempor. Morbi facilisis id purus in ultrices. Maecenas convallis interdum nibh, nec scelerisque ipsum sagittis at. Vivamus non cursus arcu. Pellentesque sagittis tellus massa, eu laoreet justo bibendum a. Ut ut diam consectetur, gravida augue eu, convallis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Suspendisse tincidunt tellus et dignissim aliquam.</p>
-	 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla lorem, dapibus eu velit vitae, hendrerit interdum massa. Sed mattis lorem ante, nec convallis nulla pretium ac. Proin tortor lorem, vestibulum eu ligula non, accumsan vestibulum odio. Integer varius tristique suscipit. Mauris ut nisl et velit elementum viverra. Vestibulum eleifend massa at ligula facilisis molestie. Maecenas massa justo, rhoncus ac posuere in, iaculis sit amet elit. In dignissim faucibus lectus, ac blandit libero porta non. Aenean dui ipsum, dignissim vel nulla a, viverra ultricies est. Aenean id libero vitae tortor rutrum iaculis sit amet a turpis. Vivamus accumsan egestas augue, consequat sollicitudin lectus sollicitudin eu. Sed feugiat risus turpis, vel lobortis ligula interdum vel. Pellentesque pretium metus eros, sed sodales mi tempor at. Cras commodo, tellus eget aliquam ullamcorper, arcu eros ullamcorper tortor, id mollis lectus mauris et lacus.</p>
-	 <p>Nulla quis lectus id nisi vulputate adipiscing. Vivamus sit amet placerat nisi, sit amet ullamcorper lorem. Quisque consectetur lobortis est, non sagittis purus consectetur semper. Vestibulum cursus dapibus neque quis venenatis. Pellentesque vitae augue vel sem commodo tristique at sit amet urna. Nulla consequat risus in rutrum interdum. Aliquam sit amet elit eu lacus accumsan fermentum eget sed urna. Cras at elit nec orci facilisis egestas. Curabitur ac risus dictum, bibendum sapien non, fringilla nulla. Donec magna leo, condimentum id ante non, scelerisque consectetur eros. Suspendisse potenti. Maecenas vulputate ultricies arcu auctor sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	 <p>Aliquam et lorem sagittis, porta mi at, iaculis nibh. Nam vitae elit ut tortor mollis tincidunt. Nunc iaculis dui a aliquet venenatis. Duis sit amet dui non diam adipiscing iaculis. Aliquam erat volutpat. Fusce faucibus euismod turpis sed tempor. Morbi facilisis id purus in ultrices. Maecenas convallis interdum nibh, nec scelerisque ipsum sagittis at. Vivamus non cursus arcu. Pellentesque sagittis tellus massa, eu laoreet justo bibendum a. Ut ut diam consectetur, gravida augue eu, convallis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Suspendisse tincidunt tellus et dignissim aliquam.</p>
-	 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla lorem, dapibus eu velit vitae, hendrerit interdum massa. Sed mattis lorem ante, nec convallis nulla pretium ac. Proin tortor lorem, vestibulum eu ligula non, accumsan vestibulum odio. Integer varius tristique suscipit. Mauris ut nisl et velit elementum viverra. Vestibulum eleifend massa at ligula facilisis molestie. Maecenas massa justo, rhoncus ac posuere in, iaculis sit amet elit. In dignissim faucibus lectus, ac blandit libero porta non. Aenean dui ipsum, dignissim vel nulla a, viverra ultricies est. Aenean id libero vitae tortor rutrum iaculis sit amet a turpis. Vivamus accumsan egestas augue, consequat sollicitudin lectus sollicitudin eu. Sed feugiat risus turpis, vel lobortis ligula interdum vel. Pellentesque pretium metus eros, sed sodales mi tempor at. Cras commodo, tellus eget aliquam ullamcorper, arcu eros ullamcorper tortor, id mollis lectus mauris et lacus.</p>
-	 <p>Nulla quis lectus id nisi vulputate adipiscing. Vivamus sit amet placerat nisi, sit amet ullamcorper lorem. Quisque consectetur lobortis est, non sagittis purus consectetur semper. Vestibulum cursus dapibus neque quis venenatis. Pellentesque vitae augue vel sem commodo tristique at sit amet urna. Nulla consequat risus in rutrum interdum. Aliquam sit amet elit eu lacus accumsan fermentum eget sed urna. Cras at elit nec orci facilisis egestas. Curabitur ac risus dictum, bibendum sapien non, fringilla nulla. Donec magna leo, condimentum id ante non, scelerisque consectetur eros. Suspendisse potenti. Maecenas vulputate ultricies arcu auctor sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	 <p>Aliquam et lorem sagittis, porta mi at, iaculis nibh. Nam vitae elit ut tortor mollis tincidunt. Nunc iaculis dui a aliquet venenatis. Duis sit amet dui non diam adipiscing iaculis. Aliquam erat volutpat. Fusce faucibus euismod turpis sed tempor. Morbi facilisis id purus in ultrices. Maecenas convallis interdum nibh, nec scelerisque ipsum sagittis at. Vivamus non cursus arcu. Pellentesque sagittis tellus massa, eu laoreet justo bibendum a. Ut ut diam consectetur, gravida augue eu, convallis metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Suspendisse tincidunt tellus et dignissim aliquam.</p>
-	</div>
+	<div id="frame"></div>
+	
+	<!--
+	
+	need to:
+	- enable smooth scroll
+	- window resizing
+	- make all links open in new window because they don't neccesarily work
+	- create a modal / graphic that shows you how to use it - like a quick 5 second image
+	
+	--->
+	
 </body>
 </html>

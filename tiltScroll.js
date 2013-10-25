@@ -1,6 +1,10 @@
 /* ====================================================================================
 tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
-> Depends on jQuery & gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license]
+
+> Dependencies 
+>>jQuery
+>>gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license] 
+>> xframe.js [Copyright (c) 2013 Sho Hashimoto <hashimoto@shokai.org> released under the MIT license] 
 
 (The MIT License)
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -47,45 +51,44 @@ gyro.startTracking(function(o) {
 });
 ///////////////////////////////////////////////////////////////////////////////////////
 
-function tiltScroll(y) {window.scrollBy(0,y);}
+//function tiltScroll(y) {window.scrollBy(0,y);}
+function tiltScroll(y) {xframe.scrollY(y);}
 
-function scrollDebug(c) {
-	$('p').css( "color", c);
-	
-	/*var allP = document.getElementsByTagName('p');
-	for (var i=0; i < allP.length; i++ ) {
-		allP[i].style.color = c;
-	}*/
-}
+function scrollDebug(c) {$('p').css( "color", c);}
 
 function enableScroll(){
 	scrollFlag = 1;
  	
- 	//document.getElementById('eScroll').show();
- 	//document.getElementById('dScroll').hide();
- 	
  	$('#scrollOn').show();
  	$('#scrollOff').hide();
- 	
 } 
 
 function disableScroll(){
 	scrollFlag = 0;
 	scrollDebug("black");
- 	
- 	//document.getElementById('eScroll').hide();
- 	//document.getElementById('dScroll').show();
- 	
+	
  	$('#scrollOn').hide();
  	$('#scrollOff').show();
 }
 
 function scrollIndicator(dir){
-	if (dir > 0){document.getElementById('sIndicator').innerHTML="<i class='fa fa-long-arrow-down fa-fw'></i>";}
-	else if (dir == 0){document.getElementById('sIndicator').innerHTML="<i class='fa fa-long-arrow-up fa-fw'></i>";}
-	else {document.getElementById('sIndicator').innerHTML="<i class='fa fa-fw'></i>";}
+	if (dir > 0){$('#sIndicator').html("<i class='fa fa-long-arrow-down fa-fw'></i>")}
+	else if (dir == 0){$('#sIndicator').html("<i class='fa fa-long-arrow-up fa-fw'></i>")}
+	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
 }
 
-$(document).ready(function() {	
+// xframe variables
+var xframe = null;
+var url = "http://nealshyam.com";
+
+$(function(){
 	enableScroll();
+
+	// xframe scrolling init
+  xframe = new XFrame("div#frame");
+  xframe.load(url);
+  xframe.mouseScroll = true;
 });
+
+
+

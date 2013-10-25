@@ -34,17 +34,17 @@ body {
 	color:#7D0552;
 }
 
-.frame {
+#frame {
 	padding-top:40px; 
-	margin-left:10px; 
-	margin-right:10px;
+	margin-left:0px; 
+	margin-right:0px;
 }
 
-.frame img {
+#frame img {
 	max-width:300px;
 }
 
-.frame a {
+#frame a {
 	color:#7D0552;
 	text-decoration:none;
 	font-weight:bold;

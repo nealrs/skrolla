@@ -1,0 +1,48 @@
+body {
+	margin:auto;
+}
+
+#sHead {
+	position:fixed; 
+	font-size:100%; 
+	text-align:center; 
+	width:100%; 
+	margin-top:0px;
+	padding:10px; 
+	background-color:#F2F2F2; 
+	-webkit-box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5); 
+	-moz-box-shadow: 0px 5px 3px rgba(50, 50, 50, 0.5); 
+	box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5);
+}
+
+#sHead a {
+	text-decoration:none;
+	color:#7D0552;
+}
+
+#scrollOn {
+	color:#7D0552;
+}
+
+#scrollOff {
+	color:#726E6D;
+}
+
+#sIndicator {
+}
+
+.frame {
+	padding-top:40px; 
+	margin-left:10px; 
+	margin-right:10px;
+}
+
+.frame img {
+	max-width:300px;
+}
+
+.frame a {
+	color:#7D0552;
+	text-decoration:none;
+	font-weight:bold;
+}

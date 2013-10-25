@@ -61,16 +61,23 @@ function scrollDebug(c) {
 function enableScroll(){
 	scrollFlag = 1;
  	
- 	document.getElementById('eScroll').innerHTML="<i class='fa fa-circle fa-fw'></i> ON";
- 	document.getElementById('dScroll').innerHTML="<i class='fa fa-circle-o fa-fw'></i> OFF";
+ 	//document.getElementById('eScroll').show();
+ 	//document.getElementById('dScroll').hide();
+ 	
+ 	$('#scrollOn').show();
+ 	$('#scrollOff').hide();
+ 	
 } 
 
 function disableScroll(){
 	scrollFlag = 0;
 	scrollDebug("black");
  	
- 	document.getElementById('eScroll').innerHTML="<i class='fa fa-circle-o fa-fw'></i> ON";
- 	document.getElementById('dScroll').innerHTML="<i class='fa fa-circle fa-fw'></i> OFF";
+ 	//document.getElementById('eScroll').hide();
+ 	//document.getElementById('dScroll').show();
+ 	
+ 	$('#scrollOn').hide();
+ 	$('#scrollOff').show();
 }
 
 function scrollIndicator(dir){

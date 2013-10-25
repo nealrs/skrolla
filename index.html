@@ -6,25 +6,26 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="gyro.min.js"></script>
 <script src="tiltScroll.js"></script>
+<link href="tiltScroll.css" rel="stylesheet">
+
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 </head>
 
-<body style="margin:auto;">
-	<div style="position:fixed; font-size:100%; text-align:center; width:100%; margin-top:0px;padding:10px; background-color:#F2F2F2; -webkit-box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5); -moz-box-shadow: 0px 5px 3px rgba(50, 50, 50, 0.5); box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5);">
-		<a href="http://twitter.com/home?status=gyro%20activated%20scrolling%20by%20@nealrs:%20http://gam.s3.amazonaws.com/tilt/index.html" title="Share this on Twitter" target="_blank" style="text-decoration:none;"><i class="fa fa-share fa-fw"></i></a> tiltScroll <span id="eScroll" onclick="enableScroll()"></span>
-		<span id="dScroll" onclick="disableScroll()"></span>
-		<!--&nbsp; <span id="sStatus"></span> &nbsp; -->
-		<!---<span style="background-color:rgba(255,0,0,0.5); padding:5px;" id="sIndicator"></span>--->
+<body>
+	<div id = "sHead">
+		<a href="#" title="Share this" target="_blank"><i class="fa fa-share fa-fw"></i></a>&nbsp;&nbsp; 
+		tiltScroll&nbsp;&nbsp;
+		<span id="scrollOn" onclick="disableScroll()"><i class='fa fa-circle fa-fw'></i>&nbsp;on</span>
+		<span id="scrollOff" onclick="enableScroll()"><i class='fa fa-circle-o fa-fw'></i>&nbsp;off</span>&nbsp;&nbsp;
 		<span id="sIndicator"></span>
-		
 	</div>
 <!-- ================================================================================= -->	
 
-	<div style="padding-top:40px; margin-left:10px; margin-right:10px;">
+	<div class="frame">
 	 <p style="text-align:center;">
-	 	Tilt to scroll. Inspired by <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" title="git -at me" target="_blank" style="text-decoration:none;">git -at me</a>.<br>
-	 	<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png" title="tiltScroll trigger boundaries" alt="tiltScroll trigger boundaries" style="max-width:300px;">
+	 	Tilt to scroll. Inspired by <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" title="git -at me" target="_blank">git -at me</a>.<br>
+	 	<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png" title="tiltScroll trigger boundaries" alt="tiltScroll trigger boundaries">
 	 </p>
 	 
 	 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nulla lorem, dapibus eu velit vitae, hendrerit interdum massa. Sed mattis lorem ante, nec convallis nulla pretium ac. Proin tortor lorem, vestibulum eu ligula non, accumsan vestibulum odio. Integer varius tristique suscipit. Mauris ut nisl et velit elementum viverra. Vestibulum eleifend massa at ligula facilisis molestie. Maecenas massa justo, rhoncus ac posuere in, iaculis sit amet elit. In dignissim faucibus lectus, ac blandit libero porta non. Aenean dui ipsum, dignissim vel nulla a, viverra ultricies est. Aenean id libero vitae tortor rutrum iaculis sit amet a turpis. Vivamus accumsan egestas augue, consequat sollicitudin lectus sollicitudin eu. Sed feugiat risus turpis, vel lobortis ligula interdum vel. Pellentesque pretium metus eros, sed sodales mi tempor at. Cras commodo, tellus eget aliquam ullamcorper, arcu eros ullamcorper tortor, id mollis lectus mauris et lacus.</p>

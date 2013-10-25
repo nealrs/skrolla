@@ -22,13 +22,16 @@ body {
 
 #scrollOn {
 	color:#7D0552;
+	cursor:pointer;
 }
 
 #scrollOff {
 	color:#726E6D;
+	cursor:pointer;
 }
 
 #sIndicator {
+	color:#7D0552;
 }
 
 .frame {

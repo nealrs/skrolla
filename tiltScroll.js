@@ -15,6 +15,7 @@ tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 ///////////////////////////////////////////////////////////////////////////////////////
 gyro.frequency = 300; // polling frequency
 var scrollFlag = 0; // this flag determines whether (1) or not (0) tiltScroll is enabled.
+var scrollIncrement = 25; // scroll increment
 var debug = false; // false off, true on (and red is down, blue is up)
 
 var datum = 45; // scroll datum & trigger boundaries
@@ -35,12 +36,12 @@ gyro.startTracking(function(o) {
 
 	// set angular bounds for up & down scroll zones with a 45 degree 'baseline' - see chart in readme
 	if (((db > u1 && db < u2) || (dg < d1 && dg > d2)) && scrollFlag > 0) { 
-		tiltScroll(-25);		// SCROLL UP
+		tiltScroll(-scrollIncrement);		// SCROLL UP
 		if (debug){scrollDebug("blue");}
 		scrollIndicator(0);
 	
 	} else if (((db < d1 && db > d2) || (dg > u1 && dg < u2)) && scrollFlag > 0) { 
-			tiltScroll(25); 	// SCROLL DOWN
+			tiltScroll(scrollIncrement); 	// SCROLL DOWN
 			if (debug){scrollDebug("red");}
 			scrollIndicator(1);
 	
@@ -88,6 +89,10 @@ $(function(){
   xframe = new XFrame("div#frame");
   xframe.load(url);
   xframe.mouseScroll = true;
+  
+  // add target='_blank' to all links within iframe somehow
+  $('#frame.a').attr("target","_blank");
+  
 });
 
 

@@ -4,7 +4,7 @@ tiltScroll.js, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 > Dependencies 
 >>jQuery
 >>gyro.js [Copyright (c) 2011 Tom Gallacher <http://www.tomg.co>, released under the MIT license] 
->> xframe.js [Copyright (c) 2013 Sho Hashimoto <hashimoto@shokai.org> released under the MIT license] 
+>>xframe.js [Copyright (c) 2013 Sho Hashimoto <hashimoto@shokai.org> released under the MIT license] 
 
 (The MIT License)
 > Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -78,7 +78,7 @@ function scrollIndicator(dir){
 	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
 }
 
-function exitTs(){window.location.href = url;}
+function exitTS(){window.location.href = url;}
 
 function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5284878/how-do-i-correctly-detect-orientation-change-using-javascript-and-phonegap-in-io
 	switch(window.orientation) {  

@@ -80,10 +80,16 @@ function disableScroll(){
 function scrollIndicator(dir){
 	if (dir > 0){$('#sIndicator').html("<i class='fa fa-arrow-down fa-fw'></i>")}
 	else if (dir == 0){$('#sIndicator').html("<i class='fa fa-arrow-up fa-fw'></i>")}
-	else {$('#sIndicator').html("<i class='fa fa-fw'>-</i>")}
+	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
 }
 
 function exitTS(){window.location.href = url;}
+
+function tshare(){window.location.href = "https://twitter.com/intent/tweet?url="+shareURL+"&via=skrollio";}
+function fshare(){window.location.href = "https://www.facebook.com/sharer/sharer.php?u="+shareURL;}
+function lshare(){window.location.href = "http://www.linkedin.com/shareArticle?mini=true&url="+shareURL;}
+function gshare(){window.location.href = "https://plus.google.com/share?url="+shareURL;}
+function eshare(){window.location.href = "mailto:?&subject=great read from skroll.io&body="+shareURL;}
 
 function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5284878/how-do-i-correctly-detect-orientation-change-using-javascript-and-phonegap-in-io
 	switch(window.orientation) {  
@@ -102,6 +108,7 @@ function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5
 // xframe variables
 var xframe = null;
 var url = "http://nealshyam.com";
+var shareURL = encodeURI(url);
 
 $(function(){
 	enableScroll();

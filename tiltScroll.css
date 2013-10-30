@@ -2,7 +2,7 @@ body {
 	margin:auto;
 }
 
-#sHead {
+.sHead {
 	position:fixed; 
 	font-size:100%; 
 	text-align:center; 
@@ -15,9 +15,19 @@ body {
 	box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5);
 }
 
-#sHead a {
+.sHead a {
 	text-decoration:none;
 	color:#7D0552;
+}
+
+.actions{}
+
+.socialrail {
+	padding-top:10px;
+	font-size:100%; 
+	text-align:center; 
+	color:#726E6D;
+	display:none;
 }
 
 .pointer{cursor:pointer;}

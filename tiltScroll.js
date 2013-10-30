@@ -57,6 +57,11 @@ function tiltScroll(y) {xframe.scrollY(y);}
 
 function scrollDebug(c) {$('p').css( "color", c);}
 
+function share(){
+	$('.socialrail').toggle();
+	$('#share').toggleClass("active inactive");
+} 
+
 function enableScroll(){
 	scrollFlag = 1;
  	
@@ -75,7 +80,7 @@ function disableScroll(){
 function scrollIndicator(dir){
 	if (dir > 0){$('#sIndicator').html("<i class='fa fa-arrow-down fa-fw'></i>")}
 	else if (dir == 0){$('#sIndicator').html("<i class='fa fa-arrow-up fa-fw'></i>")}
-	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
+	else {$('#sIndicator').html("<i class='fa fa-fw'>-</i>")}
 }
 
 function exitTS(){window.location.href = url;}

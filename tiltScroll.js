@@ -80,6 +80,20 @@ function scrollIndicator(dir){
 
 function exitTs(){window.location.href = url;}
 
+function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5284878/how-do-i-correctly-detect-orientation-change-using-javascript-and-phonegap-in-io
+	switch(window.orientation) {  
+		case -90:
+		case 90:
+			//alert('landscape');
+			window.location.reload();
+			break; 
+		default:
+			//alert('portrait');
+			window.location.reload();
+			break; 
+	}
+}
+
 // xframe variables
 var xframe = null;
 var url = "http://nealshyam.com";
@@ -95,7 +109,6 @@ $(function(){
   // add target='_blank' to all links within iframe somehow
   //$('#frame.a').attr("target","_blank");
   
+  window.addEventListener('orientationchange', changeOrientation);
+  //doOnOrientationChange();
 });
-
-
-

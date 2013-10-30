@@ -2,7 +2,7 @@
 <head>
 	<title>tiltScroll</title>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script src="gyro.min.js"></script>
 	<script src="tiltScroll.js"></script>
 	<script src="xframe.min.js"></script>
@@ -38,6 +38,7 @@
 	
 	<!--
 	need to:
+	- detect user agents and direct tablet users to a "skroll.io is for phones only" right now + 5 s delay + autodirect to desired URL. 
 	- smoother scrolling (futz with polling & increment parameters)
 	- window resizing (horizontal switch & page zooming?)
 	- make all links open in new window because they don't neccesarily work (javascript)

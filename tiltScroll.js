@@ -107,7 +107,7 @@ function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5
 
 // xframe variables
 var xframe = null;
-var url = "http://nealshyam.com";
+var url = "http://cnn.com";
 var shareURL = encodeURI(url);
 
 $(function(){

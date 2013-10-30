@@ -73,8 +73,8 @@ function disableScroll(){
 }
 
 function scrollIndicator(dir){
-	if (dir > 0){$('#sIndicator').html("<i class='fa fa-long-arrow-down fa-fw'></i>")}
-	else if (dir == 0){$('#sIndicator').html("<i class='fa fa-long-arrow-up fa-fw'></i>")}
+	if (dir > 0){$('#sIndicator').html("<i class='fa fa-arrow-down fa-fw'></i>")}
+	else if (dir == 0){$('#sIndicator').html("<i class='fa fa-arrow-up fa-fw'></i>")}
 	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
 }
 

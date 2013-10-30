@@ -15,12 +15,11 @@
 <body>
 
 	<div id = "sHead">
-		<a href="#" title="Share this" target="_blank"><i class="fa fa-share fa-fw"></i></a>&nbsp;&nbsp; 
-		tiltScroll&nbsp;&nbsp;
-		<span id="scrollOn" onclick="disableScroll()"><i class='fa fa-circle fa-fw'></i>&nbsp;on</span>
-		<span id="scrollOff" onclick="enableScroll()"><i class='fa fa-circle-o fa-fw'></i>&nbsp;off</span>&nbsp;
-		<span id="sIndicator"></span>&nbsp;
-		<span id="exit" onclick="exitTs()"><i class='fa fa-times fa-fw'></i>&nbsp;exit</a></span>
+		<span class="pointer active" id="share" onclick="shareSocial()"><i class="fa fa-share fa-fw"></i>&nbsp;share</span>&nbsp;&nbsp; 
+		<span class="pointer active" id="scrollOn" onclick="disableScroll()"><i class='fa fa-circle fa-fw'></i>&nbsp;on</span>
+		<span class="pointer inactive" id="scrollOff" onclick="enableScroll()"><i class='fa fa-circle-o fa-fw'></i>&nbsp;off</span>&nbsp;
+		<span class="active" id="sIndicator"></span>&nbsp;
+		<span class="pointer active" id="exit" onclick="exitTs()"><i class='fa fa-times fa-fw'></i>&nbsp;exit</a></span>
 	</div>
 
 	<div id="frame"></div>
@@ -31,7 +30,7 @@
 	- smoother scrolling (futz with polling & increment parameters)
 	- window resizing (horizontal switch & page zooming?)
 	- make all links open in new window because they don't neccesarily work (javascript)
-	- create a modal / graphic that shows you how to use it - like a quick 5 second image (js / css / png)
+	- create a modal / graphic that shows you how to use it - like a quick 5 second image (js / css / png) -- use session.js to determine age of session/how new user is.
 	- maybe add noise to header (css/base64 png)
 	- text articles to myself via twilio & a desktop browser widget
 	--->

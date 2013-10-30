@@ -110,5 +110,5 @@ $(function(){
   //$('#frame.a').attr("target","_blank");
   
   window.addEventListener('orientationchange', changeOrientation);
-  //doOnOrientationChange();
+  //changeOrientation();
 });

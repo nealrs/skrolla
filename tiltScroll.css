@@ -20,37 +20,14 @@ body {
 	color:#7D0552;
 }
 
-#scrollOn {
-	color:#7D0552;
-	cursor:pointer;
-}
+.pointer{cursor:pointer;}
 
-#scrollOff {
-	color:#726E6D;
-	cursor:pointer;
-}
+.active{color:#7D0552;}
 
-#sIndicator {
-	color:#7D0552;
-}
-
-#exit {
-	color:#7D0552;
-	cursor:pointer;
-}
+.inactive{color:#726E6D;}
 
 #frame {
 	padding-top:40px; 
 	margin-left:0px; 
 	margin-right:0px;
-}
-
-#frame img {
-	max-width:300px;
-}
-
-#frame a {
-	color:#7D0552;
-	text-decoration:none;
-	font-weight:bold;
 }

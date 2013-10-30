@@ -34,6 +34,11 @@ body {
 	color:#7D0552;
 }
 
+#exit {
+	color:#7D0552;
+	cursor:pointer;
+}
+
 #frame {
 	padding-top:40px; 
 	margin-left:0px; 

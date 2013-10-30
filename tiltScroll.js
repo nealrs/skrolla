@@ -78,6 +78,8 @@ function scrollIndicator(dir){
 	else {$('#sIndicator').html("<i class='fa fa-fw'></i>")}
 }
 
+function exitTs(){window.location.href = url;}
+
 // xframe variables
 var xframe = null;
 var url = "http://nealshyam.com";
@@ -91,7 +93,7 @@ $(function(){
   xframe.mouseScroll = true;
   
   // add target='_blank' to all links within iframe somehow
-  $('#frame.a').attr("target","_blank");
+  //$('#frame.a').attr("target","_blank");
   
 });
 

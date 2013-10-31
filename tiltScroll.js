@@ -85,7 +85,7 @@ function scrollIndicator(dir){
 
 function exitTS(){window.location.href = url;}
 
-function tshare(){window.location.href = "https://twitter.com/intent/tweet?url="+shareURL+"&via=skrollio";}
+function tshare(){window.location.href = "https://twitter.com/intent/tweet?text=check it, via @skrollio: &url="+shareURL;}
 function fshare(){window.location.href = "https://www.facebook.com/sharer/sharer.php?u="+shareURL;}
 function lshare(){window.location.href = "http://www.linkedin.com/shareArticle?mini=true&url="+shareURL;}
 function gshare(){window.location.href = "https://plus.google.com/share?url="+shareURL;}
@@ -105,9 +105,22 @@ function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5
 	}
 }
 
+function getParam(VarSearch){ // thanks http://javascriptproductivity.blogspot.com/2013/02/get-url-variables-with-javascript.html
+    var SearchString = window.location.search.substring(1);
+    var VariableArray = SearchString.split('&');
+    for(var i = 0; i < VariableArray.length; i++){
+        var KeyValuePair = VariableArray[i].split('=');
+        if(KeyValuePair[0] == VarSearch){
+            return KeyValuePair[1];
+        }
+    }
+}
+
 // xframe variables
 var xframe = null;
-var url = "http://cnn.com";
+//var url = "http://cnn.com";
+var u = getParam('u');
+var url = decodeURI(u);
 var shareURL = encodeURI(url);
 
 $(function(){

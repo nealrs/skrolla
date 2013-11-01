@@ -14,4 +14,20 @@ def main_app(path=None):
 	
 if __name__ == '__main__':
     app.debug = True
-    app.run()    
+    app.run()
+
+# 	To Do list:    
+## 	need better URL validation, checking, and error handling 
+## 	create a template / landing page for / route &  explain what skrol.la is
+##	create url shortener that returns skrol.la/URL
+##	text articles to myself via twilio & a desktop browser widget
+
+##	smoother scrolling (futz with polling & increment parameters)
+## 	resize iframe if window change
+##	detect user agents and direct tablet users to a "skrol.la is for phones only" right now + 5 s delay + autodirect to desired URL. 
+
+## 	make all links from iframe open in new window with javascript
+##	create a modal / graphic that shows you how to use it - like a quick 5 second image (js / css / png) -- use session.js to determine age of session/how new user is.
+##	make exit button go to current page in iframe - not originally openeded page.
+##	find a way to catch x-frame exceptions
+##	maybe add noise to header (css/base64 png)

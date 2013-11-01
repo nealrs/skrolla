@@ -3,10 +3,16 @@
 	<title>tiltScroll</title>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="gyro.min.js"></script>
-	<script src="tiltScroll.js"></script>
-	<script src="xframe.min.js"></script>
-	<link href="tiltScroll.css" rel="stylesheet">
+	<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+	<script src="/static/gyro.min.js"></script>
+	<script src="/static/tiltScroll.js"></script>
+	<script src="/static/xframe.min.js"></script>
+	
+	<script type="text/javascript">
+		url = "{{ path }}";
+	</script>
+	
+	<link href="/static/tiltScroll.css" rel="stylesheet">
 
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
@@ -33,6 +39,10 @@
 		</div>
 		
 	</div>
+	
+<!----- debug---->
+<!--<br><br><h1>{{path}}</h1>-->
+<!----- debug---->
 
 	<div id="frame"></div>
 	
@@ -46,7 +56,6 @@
 	- maybe add noise to header (css/base64 png)
 	- text articles to myself via twilio & a desktop browser widget
 	- make exit button go to current page in iframe - not originally openeded page.
-	- x-frame workaround????
 	--->
 	
 </body>

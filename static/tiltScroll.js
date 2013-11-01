@@ -119,18 +119,22 @@ function getParam(VarSearch){ // thanks http://javascriptproductivity.blogspot.c
 // xframe variables
 var xframe = null;
 //var url = "http://cnn.com";
-var u = getParam('u');
-var url = decodeURI(u);
-var shareURL = encodeURI(url);
+//var u = getParam('u');
+//var url = decodeURI(u);
+
+//var lURL = window.url;
+//shareURL = encodeURI(window.url);
 
 $(function(){
 	enableScroll();
-
+	
 	// xframe scrolling init
   xframe = new XFrame("div#frame");
-  xframe.load(url);
+  xframe.load(window.url);
   xframe.mouseScroll = true;
   
+  shareURL = encodeURI(window.url);
+
   // add target='_blank' to all links within iframe somehow
   //$('#frame.a').attr("target","_blank");
   

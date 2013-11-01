@@ -23,7 +23,7 @@ if __name__ == '__main__':
 ##	text articles to myself via twilio & a desktop browser widget
 
 ##	smoother scrolling (futz with polling & increment parameters)
-## 	resize iframe if window change
+## 	resize iframe on window change (currently reloads on rotation change)
 ##	detect user agents and direct tablet users to a "skrol.la is for phones only" right now + 5 s delay + autodirect to desired URL. 
 
 ## 	make all links from iframe open in new window with javascript

@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
 # 	To Do list:    
 ## 	need better URL validation, checking, and error handling 
-## 	create a template / landing page for / route &  explain what skrol.la is
+## 	create a template / landing page for / route &  explain what skrolla is
 ##	create url shortener that returns skrol.la/URL
 ##	text articles to myself via twilio & a desktop browser widget
 

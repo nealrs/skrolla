@@ -1,5 +1,5 @@
 /* ====================================================================================
-skrol.la, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
+skrolla, Copyright (c) 2013 Neal Shyam <http://www.nealshyam.com>
 
 > Dependencies 
 >>jQuery
@@ -89,7 +89,7 @@ function tshare(){window.location.href = "https://twitter.com/intent/tweet?text=
 function fshare(){window.location.href = "https://www.facebook.com/sharer/sharer.php?u="+shareURL;}
 function lshare(){window.location.href = "http://www.linkedin.com/shareArticle?mini=true&url="+shareURL;}
 function gshare(){window.location.href = "https://plus.google.com/share?url="+shareURL;}
-function eshare(){window.location.href = "mailto:?&subject=great read from skrol.la&body="+shareURL;}
+function eshare(){window.location.href = "mailto:?&subject=great read from skrolla&body="+shareURL;}
 
 function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5284878/how-do-i-correctly-detect-orientation-change-using-javascript-and-phonegap-in-io
 	switch(window.orientation) {  

@@ -118,12 +118,6 @@ function getParam(VarSearch){ // thanks http://javascriptproductivity.blogspot.c
 
 // xframe variables
 var xframe = null;
-//var url = "http://cnn.com";
-//var u = getParam('u');
-//var url = decodeURI(u);
-
-//var lURL = window.url;
-//shareURL = encodeURI(window.url);
 
 $(function(){
 	enableScroll();

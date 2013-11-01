@@ -7,7 +7,9 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def main_app(path=None):
-    #return 'url: ' + path
+	if (path==""):
+		return "Sorry bro, you forgot to add a URL"
+	else:
 		return render_template('app.html', path=path)
 	
 if __name__ == '__main__':

@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>Skrolla - Mobile reading redefined</title>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+
+	<script type="text/javascript">
+		
+		function sendPhone(){
+			baseURL = encodeURI($('#longURL').val());
+			longURL = encodeURI("http://dev.skrol.la/v/") + baseURL;
+			
+			phoneNum = $('#phoneNum').val();
+			alert("long url: " + longURL + ", "+ "phone: "+phoneNum);
+
+			get_short_url(longURL, function(short_url) {
+  			alert(short_url);
+  			// replace with method to send sms via twilio
+  		});
+			
+		}
+		
+		// thanks: http://stackoverflow.com/questions/1992298/why-cant-i-call-bit-ly-api-from-javascript-using-jquerys-get-function
+		function get_short_url(long_url, func){
+			$.getJSON(
+				"http://api.bitly.com/v3/shorten?callback=?", 
+				{ 
+					"format": "json",
+					"apiKey": "R_39770af704cc31c0c526191109214e79",
+					"login": "o_mrpi7r3qb",
+					"longUrl": long_url
+				},
+				function(response){func(response.data.url);}
+			);
+		}
+		
+	</script>
+	
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+</head>
+
+<body>
+	<div class = "mContainer">
+		<div class = "mHead">Skrolla - Mobile reading redefined</div>
+		
+		<div class = "mLeft" style="float:left;">
+			
+			<input type="text" id = "longURL" placeholder="http://disney.com"><br>
+			<input type="text" id = "phoneNum" placeholder="XXX.XXX.XXXX"><br>
+			
+			<input type="button" id = "send" value="Send to phone" onclick="sendPhone()">
+		</div>
+		
+		<!--<div class = "mRight" style="float:left;">ANIMATED EXAMPLE</div>-->
+		<br style="clear: both;">
+		<div class = "mFoot">&copy; 2013 <a href="#">Skrolla</a> & <a href="http://nealshyam.com">Neal Shyam</a></div>
+	</div>
+</body>
+</html>

@@ -15,10 +15,15 @@
 			phoneNum = $('#phoneNum').val();
 			alert("long url: " + longURL + ", "+ "phone: "+phoneNum);
 
-			get_short_url(longURL, function(short_url) {
-  			alert(short_url);
-  			// replace with method to send sms via twilio
-  		});
+			// now to ajax post to another URL for processing.
+			$.post( "http://nealshyam.com/sms.php", { url: longURL, to: phoneNum } );
+ 				// now use sms.php to do bit.ly url shortening & sms it via twilio.
+ 
+			// Put the results in a div
+			//posting.done(function( data ) {
+				//var content = $( data ).find( "#content" );
+				//$( "#result" ).empty().append( content );
+			//});
 			
 		}
 		
@@ -50,7 +55,6 @@
 			
 			<i class="fa fa-fw fa-link"></i> <input type="text" id = "longURL" placeholder="http://disney.com"><br>
 			<i class="fa fa-fw fa-phone"></i> <input type="text" id = "phoneNum" placeholder="XXX.XXX.XXXX"><br>
-			
 			<i class="fa fa-fw fa-check-square"></i> <input type="button" id = "send" value="Send to phone" onclick="sendPhone()">
 		
 		</div>

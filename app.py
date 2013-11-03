@@ -14,7 +14,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def landing():
-	return render_template('main.html')
+	#return render_template('main.html')
+	return render_template('main2.html')
 
 @app.route('/view/', defaults={'path': ''})
 @app.route('/view/<path:path>')

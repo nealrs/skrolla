@@ -2,6 +2,7 @@
 <head>
 	<title>Skrolla - Mobile reading redefined</title>
 
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
 
@@ -45,12 +46,13 @@
 	<div class = "mContainer">
 		<div class = "mHead">Skrolla - Mobile reading redefined</div>
 		
-		<div class = "mLeft" style="float:left;">
+		<div class = "mLeft" style="float:left;margin:5px;">
 			
-			<input type="text" id = "longURL" placeholder="http://disney.com"><br>
-			<input type="text" id = "phoneNum" placeholder="XXX.XXX.XXXX"><br>
+			<i class="fa fa-fw fa-link"></i> <input type="text" id = "longURL" placeholder="http://disney.com"><br>
+			<i class="fa fa-fw fa-phone"></i> <input type="text" id = "phoneNum" placeholder="XXX.XXX.XXXX"><br>
 			
-			<input type="button" id = "send" value="Send to phone" onclick="sendPhone()">
+			<i class="fa fa-fw fa-check-square"></i> <input type="button" id = "send" value="Send to phone" onclick="sendPhone()">
+		
 		</div>
 		
 		<!--<div class = "mRight" style="float:left;">ANIMATED EXAMPLE</div>-->

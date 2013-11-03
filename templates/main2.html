@@ -16,7 +16,7 @@
 			alert("long url: " + longURL + ", "+ "phone: "+phoneNum);
 
 			// now to ajax post to another URL for processing.
-			$.post( "http://nealshyam.com/sms.php", { url: longURL, to: phoneNum } );
+			//$.post( "http://nealshyam.com/sms.php", { url: longURL, to: phoneNum } );
  				// now use sms.php to do bit.ly url shortening & sms it via twilio.
  
 			// Put the results in a div
@@ -52,11 +52,11 @@
 		<div class = "mHead">Skrolla - Mobile reading redefined</div>
 		
 		<div class = "mLeft" style="float:left;margin:5px;">
-			
-			<i class="fa fa-fw fa-link"></i> <input type="text" id = "longURL" placeholder="http://disney.com"><br>
-			<i class="fa fa-fw fa-phone"></i> <input type="text" id = "phoneNum" placeholder="XXX.XXX.XXXX"><br>
-			<i class="fa fa-fw fa-check-square"></i> <input type="button" id = "send" value="Send to phone" onclick="sendPhone()">
-		
+			<form action="http://nealshyam.com/sms2.php" method=POST>
+				<i class="fa fa-fw fa-link"></i> <input type="text" id = "url" name ="url" placeholder="http://disney.com"><br>
+				<i class="fa fa-fw fa-phone"></i> <input type="text" id = "to" name ="to" placeholder="XXX.XXX.XXXX"><br>
+				<i class="fa fa-fw fa-check-square"></i> <input type="submit" id = "send" value="Send to phone">
+			</form>
 		</div>
 		
 		<!--<div class = "mRight" style="float:left;">ANIMATED EXAMPLE, throw in a cool scrolling gif/example thingie here like all the cool new sites have.s</div>-->

@@ -1,15 +1,5 @@
 #import os    
 from flask import Flask, render_template, url_for, redirect
-from twilio.rest import TwilioRestClient
-
-#twilio shit
-tSid = "AC200ee2c03615800f854247cdce4085f5"
-tToken = "2d43126af5d69246efc69c083ace9357"
-fSMS = "+13474721195"
-tClient = TwilioRestClient(tSid, tToken)
-def smsURL(tNum, lURL):
-	message = tClient.messages.create(to=tNum, from_=fSMS, body="Skrolla-way! "+lURL)
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,13 +13,11 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
-		#smsURL("+13093978751", "http://dev.skrol.la/view/"+path)
 		return render_template('app.html', path=path)
 	
 if __name__ == '__main__':
     app.debug = True
     app.run()
-
 
 # 	To Do list:    
 ## 	need better URL validation, checking, and error handling + webform for shortening URL & SMSing it to client

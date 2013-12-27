@@ -1,10 +1,23 @@
 #import os    
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, request
 
 import datetime
 from sqlalchemy import create_engine, MetaData, exc, Table
 from os import environ
 import re
+
+import sys
+from twilio.rest import TwilioRestClient
+import bitlyapi
+
+# twilio credentials
+account_sid = "AC200ee2c03615800f854247cdce4085f5"
+auth_token = "2d43126af5d69246efc69c083ace9357"
+
+# bit.ly credentials
+btly_user = 'o_mrpi7r3qb'
+btly_key ='R_39770af704cc31c0c526191109214e79'
+fromnum = "+13474721195"
 
 # create new url entry
 def addURL(u):
@@ -16,8 +29,14 @@ def addURL(u):
 	
 	log_table = Table('url_table', metadata, autoload=True)	
 	con = engine.connect()	
-	con.execute( log_table.insert(), date=d, url=u)
+	con.execute( log_table.insert(), date=d, url=u, ip = request.remote_addr)
 	con.close()
+
+# bit.ly shortening
+def bitly(url):	
+	b = bitlyapi.BitLy(btly_user, btly_key)
+	shortURL = b.shorten(longUrl=url)
+	return shortURL['url']
 
 app = Flask(__name__)
 
@@ -31,13 +50,40 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
-		# log URL
+		# log URL in MySQL
 		#addURL(path)
 		
 		# find http:// | https:// and remove it
 		# replace w/ http via javascript - but, this does break https & still fails on CORS problems 
-		re.sub(r'/^(https?:\/\/)?', '', path)
+		path = re.sub(r'^(https?:\/\/)?', '', path)
 		return render_template('view.html', path=path)
+		
+@app.route('/sms/', methods=['POST'])
+def sms():
+	url = re.sub(r'^(https?:\/\/)?', '', request.form['url'])
+	to = request.form['to']
+		
+	if (url==None or url=='' or to=='' or to==None):
+		return redirect(url_for('landing'))
+	else:
+		# log URL in MySQL & shorten it
+		#addURL(path)
+		shortURL = bitly('http://dev.skrol.la/view/'+url)
+		
+		# construct & send txt message
+		try:
+			client = TwilioRestClient(account_sid, auth_token)
+			msg = client.sms.messages.create(
+        body= "Skrolla-way: "+shortURL,
+        to= to,
+        from_= fromnum
+      )
+		except twilio.TwilioRestException as e:
+			print e
+    
+		# display a confirmation page w/ short link. 
+		return render_template('sms.html', url=url, surl=shortURL )
+		#return shortURL +' -- ' + url + '-- ' + 'http://dev.skrol.la/view/'+url
 	
 if __name__ == '__main__':
     app.debug = True

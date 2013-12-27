@@ -24,6 +24,9 @@ var u2 = 15;
 var d1 = -5;
 var d2 = -25;
 
+var b0 = datum; // leaving initDatum off for now, but will require some more tuning. more natural scroll bounds.
+var g0 = -datum;
+
 gyro.startTracking(function(o) {
 
 	var b0 = datum; // 45 deg datum
@@ -64,6 +67,9 @@ function share(){
 
 function enableScroll(){
 	scrollFlag = 1;
+ 	
+	// might not be the best place for this function.
+ 	//initDatum();
  	
  	$('#scrollOn').show();
  	$('#scrollOff').hide();
@@ -108,8 +114,17 @@ function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5
 // xframe variables
 var xframe = null;
 
+function initDatum(){
+	// initialize g0 & b0
+	origin = gyro.getOrientation();
+	b0 = origin.beta;
+	g0 = -origin.gamma;}
+
 $(function(){
 	enableScroll();
+	
+	// might not be the best place for this function.
+ 	//initDatum();
 	
 	// xframe scrolling init
   xframe = new XFrame("div#frame");

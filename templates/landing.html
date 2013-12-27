@@ -7,10 +7,14 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="{{url_for('static', filename='mask.min.js') }}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
 	<script type='text/javascript'>
     $(document).ready(function() {
+      
+      // activate masking on phone field.
+      $('#to').mask('(000) 000-0000');
       
       // update UTM tags/URL on keyup 
       $('#url').keyup(function(){
@@ -45,7 +49,7 @@
 				<input class = "input-block-level" type="text" id = "url" name ="url" placeholder="http://disney.com">
 				
 				<span class="help-block">Enter phone number:</span>
-				<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="XXX.XXX.XXXX">
+				<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="(XXX) XXX-XXXX">
 	
 				<p>Click this link:</p>
 				<div class="alert alert-info" placeholder="http://" style="overflow:scroll;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>

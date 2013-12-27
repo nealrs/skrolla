@@ -1,14 +1,14 @@
-#import os    
+import sys
+from twilio.rest import TwilioRestClient
+import twilio.twiml
+import bitlyapi
+
 from flask import Flask, render_template, url_for, redirect, request
 
 import datetime
 from sqlalchemy import create_engine, MetaData, exc, Table
 from os import environ
 import re
-
-import sys
-from twilio.rest import TwilioRestClient
-import bitlyapi
 
 # twilio credentials
 account_sid = "AC200ee2c03615800f854247cdce4085f5"
@@ -67,7 +67,7 @@ def sms():
 		return redirect(url_for('landing'))
 	else:
 		# log URL in MySQL & shorten it
-		#addURL(path)
+		#addURL(url)
 		shortURL = bitly('http://dev.skrol.la/view/'+url)
 		
 		# construct & send txt message

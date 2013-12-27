@@ -8,6 +8,19 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+	<script type='text/javascript'>
+    $(document).ready(function() {
+      
+      // update UTM tags/URL on keyup 
+      $('#url').keyup(function(){
+      
+				url = $('#url').val().replace(/^(https?:\/\/)?/,'');
+      	$('#link').html( 'http://localhost:5000/view/'+url );
+      	$("#link").attr( 'href', '/view/'+url );
+      });
+    });
+	</script>   
 </head>
 
 <body style = "margin:auto; background-color:#F2F2F2;">
@@ -18,7 +31,15 @@
 	</div>
 
 	<div class = "row ">
-		<div class="span8 offset2">
+	
+		<div class="span4 offset2 hidden-phone">
+			<p>Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more here.</a></p>
+			<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png">
+		</div>
+		
+		<div class="span4 ">
+			<p class="hidden-phone"><strong>Try it now!</strong></p>
+			<p class="visible-phone">Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>
 			<form action="/sms/" method=POST>
 				<span class="help-block">Enter URL:</span>
 				<input class = "input-block-level" type="text" id = "url" name ="url" placeholder="http://disney.com">
@@ -26,9 +47,13 @@
 				<span class="help-block">Enter phone number:</span>
 				<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="XXX.XXX.XXXX">
 	
-				<button type="submit" class="btn btn-primary btn-block">Send to phone</button>
+				<p>Click this link:</p>
+				<div class="alert alert-info" placeholder="http://" style="overflow:scroll;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
+
+				<button type="submit" class="btn btn-primary btn-block">Send link via SMS</button>
 			</form>
 		</div>
+		
 	</div>
 
 	<div class = "row">

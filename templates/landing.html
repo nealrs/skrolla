@@ -45,14 +45,14 @@
 			<p class="hidden-phone"><strong>Try it now!</strong></p>
 			<p class="visible-phone">Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>
 			<form action="/sms/" method=POST>
-				<span class="help-block">Enter URL:</span>
+				<p>Enter URL:</p>
 				<input class = "input-block-level" type="text" id = "url" name ="url" placeholder="http://disney.com">
 				
-				<span class="help-block">Enter phone number:</span>
+				<p>Enter phone number:</p>
 				<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="(XXX) XXX-XXXX">
 	
 				<p>Click this link:</p>
-				<div class="alert alert-info" placeholder="http://" style="overflow:scroll;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
+				<div class="alert alert-info" placeholder="http://" style="overflow:auto;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
 
 				<button type="submit" class="btn btn-primary btn-block">Send link via SMS</button>
 			</form>

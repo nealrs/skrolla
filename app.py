@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def landing():
-	return render_template('main.html')
+	return render_template('landing.html')
 
 @app.route('/view/', defaults={'path': ''})
 @app.route('/view/<path:path>')
@@ -12,7 +12,7 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
-		return render_template('app.html', path=path)
+		return render_template('view.html', path=path)
 	
 if __name__ == '__main__':
     app.debug = True

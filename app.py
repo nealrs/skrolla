@@ -29,7 +29,8 @@ def addURL(u):
 	
 	log_table = Table('url_table', metadata, autoload=True)	
 	con = engine.connect()	
-	con.execute( log_table.insert(), date=d, url=u, ip = request.remote_addr)
+	#con.execute( log_table.insert(), date=d, url=u, ip = request.remote_addr)
+	con.execute( log_table.insert(), date=d, url=u)
 	con.close()
 
 # bit.ly shortening

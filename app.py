@@ -7,7 +7,7 @@ from os import environ
 import re
 
 # create new url entry
-def addURL(u, h):
+def addURL(u):
 	engine = create_engine(environ['OPENSHIFT_MYSQL_DB_URL'] + environ['OPENSHIFT_APP_NAME'], convert_unicode=True, echo=True)
 	metadata = MetaData(bind=engine)
 
@@ -31,9 +31,11 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
+		# log URL
+		#addURL(path)
+		
 		# find http:// | https:// and remove it
 		# replace w/ http via javascript - but, this does break https & still fails on CORS problems 
-		
 		re.sub(r'/^(https?:\/\/)?', '', path)
 		return render_template('view.html', path=path)
 	

@@ -1,5 +1,24 @@
 #import os    
 from flask import Flask, render_template, url_for, redirect
+
+import datetime
+from sqlalchemy import create_engine, MetaData, exc, Table
+from os import environ
+import re
+
+# create new url entry
+def addURL(u, h):
+	engine = create_engine(environ['OPENSHIFT_MYSQL_DB_URL'] + environ['OPENSHIFT_APP_NAME'], convert_unicode=True, echo=True)
+	metadata = MetaData(bind=engine)
+
+	now = datetime.datetime.now()
+	d = now.strftime('%Y-%m-%d %H:%M:%S')
+	
+	log_table = Table('url_table', metadata, autoload=True)	
+	con = engine.connect()	
+	con.execute( log_table.insert(), date=d, url=u)
+	con.close()
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,6 +31,10 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
+		# find http:// | https:// and remove it
+		# replace w/ http via javascript - but, this does break https & still fails on CORS problems 
+		
+		re.sub(r'/^(https?:\/\/)?', '', path)
 		return render_template('view.html', path=path)
 	
 if __name__ == '__main__':

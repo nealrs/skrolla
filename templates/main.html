@@ -1,29 +1,43 @@
 <html>
 <head>
-	<title>Skrolla - Mobile reading redefined</title>
-
-	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+	<title>Skrolla - mobile reading redefined</title>
+	
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">  
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 </head>
 
-<body>
-	<div class = "mContainer">
-		<div class = "mHead">Skrolla - Mobile reading redefined</div>
-		
-		<div class = "mLeft" style="float:left;margin:5px;">
-			<form action="http://nealshyam.com/sms2.php" method=POST>
-				<i class="fa fa-fw fa-link"></i> <input type="text" id = "url" name ="url" placeholder="http://disney.com"><br>
-				<i class="fa fa-fw fa-phone"></i> <input type="text" id = "to" name ="to" placeholder="XXX.XXX.XXXX"><br>
-				<i class="fa fa-fw fa-check-square"></i> <input type="submit" id = "send" value="Send to phone">
-			</form>
+<body style = "margin:auto; background-image: url('http://challenges.s3.amazonaws.com/pdf-applied/furley_bg.png');">
+	<div class = "row ">
+		<div class="span8 offset2" >
+			<h4><i class="fa fa-fw fa-arrows-v mHead "></i> Skrolla</h4>
+			<!--<p>mobile reading, redefined.</p>-->
 		</div>
-		
-		<!--<div class = "mRight" style="float:left;">ANIMATED EXAMPLE, throw in a cool scrolling gif/example thingie here like all the cool new sites have.s</div>-->
-		<br style="clear: both;">
-		<div class = "mFoot">&copy; 2013 <a href="#">Skrolla</a> & <a href="http://nealshyam.com">Neal Shyam</a></div>
 	</div>
+
+	<div class = "row ">
+		<div class="span8 offset2">
+			<div class = "mLeft">
+				<form action="http://nealshyam.com/sms2.php" method=POST>
+			 		<span class="help-block">Enter URL:</span>
+					<input class = "input-block-level" type="text" id = "url" name ="url" placeholder="http://disney.com">
+					
+					<span class="help-block">Enter phone number:</span>
+					<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="XXX.XXX.XXXX">
+		
+					<button type="submit" class="btn btn-primary btn-block">Send to phone</button>
+			 	</form>
+			</div>
+		</div>
+	</div>
+
+	<div class = "row">
+		<div class="span8 offset2" >
+			&copy; 2013 <a href="http://skrol.la">Skrolla</a> & <a href="http://neal.rs">Neal Shyam</a>
+		</div>
+	</div> 
 </body>
-</html>
+<html>

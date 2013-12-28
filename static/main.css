@@ -1,0 +1,43 @@
+body {
+	margin:auto;
+}
+
+.sHead {
+	position:fixed; 
+	font-size:100%; 
+	text-align:center; 
+	width:100%; 
+	margin-top:0px;
+	padding:10px; 
+	background-color:#F2F2F2; 
+	-webkit-box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5); 
+	-moz-box-shadow: 0px 5px 3px rgba(50, 50, 50, 0.5); 
+	box-shadow: 0px 2px 3px rgba(50, 50, 50, 0.5);
+}
+
+.sHead a {
+	text-decoration:none;
+	color:#7D0552;
+}
+
+.actions{}
+
+.socialrail {
+	padding-top:10px;
+	font-size:100%; 
+	text-align:center; 
+	color:#726E6D;
+	display:none;
+}
+
+.pointer{cursor:pointer;}
+
+.active{color:#7D0552;}
+
+.inactive{color:#726E6D;}
+
+#frame {
+	padding-top:40px; 
+	margin-left:0px; 
+	margin-right:0px;
+}

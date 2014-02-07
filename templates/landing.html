@@ -21,6 +21,7 @@
       
 				url = $('#url').val().replace(/^(https?:\/\/)?/,'');
       	$('#link').html( 'http://localhost:5000/view/'+url );
+      	<!-- add hidden input field?-->
       	$("#link").attr( 'href', '/view/'+url );
       });
     });
@@ -42,19 +43,35 @@
 		</div>
 		
 		<div class="span4 ">
-			<p class="hidden-phone"><strong>Try it now!</strong></p>
-			<p class="visible-phone">Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>
+			<p>Welcome back @{{ g.user.screen_name }}! <a href="{{ url_for('logout') }}" title="logout :(">[logout]</a></p>
+			<!--<p class="visible-phone">Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>--->
+		
+			<p>Your reading list:</p>
+				<ul>
+					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
+					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
+					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
+					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
+				</ul>	
 			<form action="/sms/" method=POST>
-				<p>Enter URL:</p>
-				<input class = "input-block-level" type="text" id = "url" name ="url" placeholder="http://disney.com">
 				
-				<p>Enter phone number:</p>
-				<input class = "input-block-level" type="text" id = "to" name ="to" placeholder="(XXX) XXX-XXXX">
+				<p>Add a new URL:</p>
+				
+				<!--<input class = "input-block-level" type="url" id = "url" name ="url" placeholder="http://disney.com">-->
+				
+				<!--<p>Enter phone number:</p>
+				<input class = "input-block-level" type="tel" id = "to" name ="to" placeholder="(XXX) XXX-XXXX">-->
 	
-				<p>Click this link:</p>
-				<div class="alert alert-info" style="overflow:auto;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
+				<!--<p>Click this link:</p>-->
+				<!--<div class="alert alert-info" style="overflow:auto;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>-->
 
-				<button type="submit" class="btn btn-primary btn-block">Send link via SMS</button>
+				<!--<button type="submit" class="btn btn-primary btn-block">Add to reading list</button>-->
+				
+				<div class="input-append">
+  				<input class="input-block-level" type="url" id = "url" name ="url" placeholder="http://disney.com">
+  				<button class="btn btn-primary" type="submit">Go!</button>
+				</div>
+				
 			</form>
 		</div>
 		

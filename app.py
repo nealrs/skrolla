@@ -3,12 +3,45 @@ from twilio.rest import TwilioRestClient
 import twilio.twiml
 import bitlyapi
 
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, g, session, flash
+from flask_oauthlib.client import OAuth
 
 import datetime
 from sqlalchemy import create_engine, MetaData, exc, Table
 from os import environ
 import re
+
+
+######
+app = Flask(__name__)
+app.secret_key = 'development'
+oauth = OAuth(app)
+
+twitter = oauth.remote_app(
+    'twitter',
+    consumer_key='xBeXxg9lyElUgwZT6AZ0A',
+    consumer_secret='aawnSpNTOVuDCjx7HMh6uSXetjNN8zWLpZwCEU4LBrk',
+    base_url='https://api.twitter.com/1.1/',
+    request_token_url='https://api.twitter.com/oauth/request_token',
+    access_token_url='https://api.twitter.com/oauth/access_token',
+    authorize_url='https://api.twitter.com/oauth/authenticate',
+)
+
+@twitter.tokengetter
+def get_twitter_token():
+    if 'twitter_oauth' in session:
+        resp = session['twitter_oauth']
+        return resp['oauth_token'], resp['oauth_token_secret']
+
+
+@app.before_request
+def before_request():
+    g.user = None
+    if 'twitter_oauth' in session:
+        g.user = session['twitter_oauth']
+
+######
+
 
 # twilio credentials
 account_sid = "AC200ee2c03615800f854247cdce4085f5"
@@ -39,11 +72,32 @@ def bitly(url):
 	shortURL = b.shorten(longUrl=url)
 	return shortURL['url']
 
-app = Flask(__name__)
-
 @app.route('/')
 def landing():
-	return render_template('landing.html')
+	if g.user is not None:
+		return render_template('landing.html')
+	else:
+		return render_template('auth.html')
+	
+@app.route('/login')
+def login():
+    callback_url = url_for('oauthorized', next=request.args.get('next'))
+    return twitter.authorize(callback=callback_url or request.referrer or None)
+
+@app.route('/logout')
+def logout():
+    session.pop('twitter_oauth', None)
+    return redirect(url_for('landing'))
+
+@app.route('/oauthorized')
+@twitter.authorized_handler
+def oauthorized(resp):
+    if resp is None:
+        flash('You denied the request to sign in.')
+    else:
+        session['twitter_oauth'] = resp
+    return redirect(url_for('landing'))	
+
 
 @app.route('/view/', defaults={'path': ''})
 @app.route('/view/<path:path>')

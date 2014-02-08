@@ -92,13 +92,13 @@ var onComplete = function(error) {
 
 // add /view/ path prefix
 function modURL(url){
-	var newURL= 'view/' + url.replace(/^(https?:\/\/)?/,'');
+	var newURL= 'view/' + url.replace(/^(https?:\/\/)?/i,'');
 	return newURL;
 }
 
 // truncate long URLs
 function truncateURL(url){	
-	url = url.replace(/^(https?:\/\/)?/,'');
+	url = url.replace(/^(https?:\/\/)?/i,'');
 	if ( url.length > 35 ){
 		url = url.substring(0,34)+'...';
 	}

@@ -1,26 +1,20 @@
 import sys
-from twilio.rest import TwilioRestClient
-import twilio.twiml
 import bitlyapi
-
+import re
 from flask import Flask, render_template, url_for, redirect, request, g, session, flash
 from flask_oauthlib.client import OAuth
-
-import datetime
-from sqlalchemy import create_engine, MetaData, exc, Table
 from os import environ
-import re
-
 
 ######
 app = Flask(__name__)
+
 app.secret_key = 'development'
 oauth = OAuth(app)
-
 twitter = oauth.remote_app(
     'twitter',
     consumer_key='xBeXxg9lyElUgwZT6AZ0A',
     consumer_secret='aawnSpNTOVuDCjx7HMh6uSXetjNN8zWLpZwCEU4LBrk',
+    
     base_url='https://api.twitter.com/1.1/',
     request_token_url='https://api.twitter.com/oauth/request_token',
     access_token_url='https://api.twitter.com/oauth/access_token',
@@ -39,32 +33,14 @@ def before_request():
     g.user = None
     if 'twitter_oauth' in session:
         g.user = session['twitter_oauth']
-
+        print (g.user)
+        # g.u2.name = g.user.screen_name
+        # g.u2.id = 'x'
 ######
-
-
-# twilio credentials
-account_sid = "AC200ee2c03615800f854247cdce4085f5"
-auth_token = "2d43126af5d69246efc69c083ace9357"
 
 # bit.ly credentials
 btly_user = 'o_mrpi7r3qb'
 btly_key ='R_39770af704cc31c0c526191109214e79'
-fromnum = "+13474721195"
-
-# create new url entry
-def addURL(u):
-	engine = create_engine(environ['OPENSHIFT_MYSQL_DB_URL'] + environ['OPENSHIFT_APP_NAME'], convert_unicode=True, echo=True)
-	metadata = MetaData(bind=engine)
-
-	now = datetime.datetime.now()
-	d = now.strftime('%Y-%m-%d %H:%M:%S')
-	
-	log_table = Table('url_table', metadata, autoload=True)	
-	con = engine.connect()	
-	#con.execute( log_table.insert(), date=d, url=u, ip = request.remote_addr)
-	con.execute( log_table.insert(), date=d, url=u)
-	con.close()
 
 # bit.ly shortening
 def bitly(url):	
@@ -98,48 +74,18 @@ def oauthorized(resp):
         session['twitter_oauth'] = resp
     return redirect(url_for('landing'))	
 
-
 @app.route('/view/', defaults={'path': ''})
 @app.route('/view/<path:path>')
 def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
-		# log URL in MySQL
-		#addURL(path)
 		
 		# find http:// | https:// and remove it
 		# replace w/ http via javascript - but, this does break https & still fails on CORS problems 
 		path = re.sub(r'^(https?:\/\/)?', '', path)
 		return render_template('view.html', path=path)
 		
-@app.route('/sms/', methods=['POST'])
-def sms():
-	url = re.sub(r'^(https?:\/\/)?', '', request.form['url'])
-	to = request.form['to']
-		
-	if (url==None or url=='' or to=='' or to==None):
-		return redirect(url_for('landing'))
-	else:
-		# log URL in MySQL & shorten it
-		#addURL(url)
-		shortURL = bitly('http://dev.skrol.la/view/'+url)
-		
-		# construct & send txt message
-		try:
-			client = TwilioRestClient(account_sid, auth_token)
-			msg = client.sms.messages.create(
-        body= "Skrolla-way: "+shortURL,
-        to= to,
-        from_= fromnum
-      )
-		except twilio.TwilioRestException as e:
-			print e
-    
-		# display a confirmation page w/ short link. 
-		return render_template('sms.html', url=url, surl=shortURL )
-		#return shortURL +' -- ' + url + '-- ' + 'http://dev.skrol.la/view/'+url
-	
 if __name__ == '__main__':
     app.debug = True
     app.run()

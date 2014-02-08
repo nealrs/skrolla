@@ -6,26 +6,21 @@
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	
+	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="{{url_for('static', filename='mask.min.js') }}"></script>
+	<script src="{{url_for('static', filename='auth_land.js') }}"></script>
+	<script src="{{url_for('static', filename='fb.js') }}"></script>
+		
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-
-	<script type='text/javascript'>
-    $(document).ready(function() {
-      
-      // activate masking on phone field.
-      $('#to').mask('(000) 000-0000');
-      
-      // update UTM tags/URL on keyup 
-      $('#url').keyup(function(){
-      
-				url = $('#url').val().replace(/^(https?:\/\/)?/,'');
-      	$('#link').html( 'http://localhost:5000/view/'+url );
-      	<!-- add hidden input field?-->
-      	$("#link").attr( 'href', '/view/'+url );
-      });
-    });
-	</script>   
+	
+	<script>
+			// for users that are logged in, let's set our 'authorized user' property so we can correctly address them via firebase.
+			var authorizedUser = '{{ g.user.screen_name }}';
+			var authorizedUserId = '{{ g.user.user_id }}';
+			
+			// check if user is new & refresh URL list
+			checkUser();
+	</script>	
 </head>
 
 <body style = "margin:auto; background-color:#F2F2F2;">
@@ -36,50 +31,29 @@
 	</div>
 
 	<div class = "row ">
-	
 		<div class="span4 offset2 hidden-phone">
 			<p>Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more here.</a></p>
 			<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png">
 		</div>
 		
 		<div class="span4 ">
-			<p>Welcome back @{{ g.user.screen_name }}! <a href="{{ url_for('logout') }}" title="logout :(">[logout]</a></p>
-			<!--<p class="visible-phone">Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>--->
+			<p><span id = "greeting"></span>&nbsp;<a href="{{ url_for('logout') }}" title="logout :(">[logout]</a></p>
 		
-			<p>Your reading list:</p>
-				<ul>
-					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
-					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
-					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
-					<li><a href="#">Truncated link Title</a> &nbsp; <a href="#" title="remove"><i class="fa fa-fw fa-trash-o"></i></a></li>
-				</ul>	
-			<form action="/sms/" method=POST>
+			<strong><p id = "list_status">Your reading list:</p></strong>
+			<div id = "list"></div>
 				
-				<p>Add a new URL:</p>
-				
-				<!--<input class = "input-block-level" type="url" id = "url" name ="url" placeholder="http://disney.com">-->
-				
-				<!--<p>Enter phone number:</p>
-				<input class = "input-block-level" type="tel" id = "to" name ="to" placeholder="(XXX) XXX-XXXX">-->
-	
-				<!--<p>Click this link:</p>-->
-				<!--<div class="alert alert-info" style="overflow:auto;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>-->
-
-				<!--<button type="submit" class="btn btn-primary btn-block">Add to reading list</button>-->
-				
-				<div class="input-append">
-  				<input class="input-block-level" type="url" id = "url" name ="url" placeholder="http://disney.com">
-  				<button class="btn btn-primary" type="submit">Go!</button>
-				</div>
-				
-			</form>
+			<p>Add a new URL:</p>
+			<div class="input-append">
+				<input class="input-block-level" type="url" id = "auth_add_url" placeholder="http://disney.com">
+				<button class="btn btn-primary" type="submit" id = "auth_add_button">Go!</button>
+			</div>
 		</div>
 		
 	</div>
 
 	<div class = "row">
 		<div class="span8 offset2" >
-			&copy; 2013 <!--<a href="http://skrol.la">Skrolla</a> & --><a href="http://neal.rs">Neal Shyam</a>
+			&copy; 2013 <!--<a href="http://skrol.la">Skrolla</a> & --><a href="http://nealshyam.com">Neal Shyam</a>
 		</div>
 	</div> 
 </body>

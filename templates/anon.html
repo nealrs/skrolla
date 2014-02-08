@@ -10,7 +10,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script src="{{url_for('static', filename='ready.js') }}"></script>
 	<script src="{{url_for('static', filename='fb.js') }}"></script>
-
+		
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
 	<script> 	// for users that aren't logged in, let's log their activity as "anon"
@@ -34,13 +34,10 @@
 		<div class="span4 ">
 			<p><a style="text-decoration:none;" href="{{ url_for('login') }}"><button class="btn btn-primary btn-block"><i class="fa fa-fw fa-twitter"></i> Sign in with Twitter</button></a><p>
 		
-			<p><strong>Or go for a test drive:</strong></p>
-				<p>1. Enter a URL:</p>
+			<p><strong>Type in a link and take a test drive:</strong></p>
 				<input class = "input-block-level geturl" type="url" id = "url" placeholder="http://disney.com">
 	
-				<p>2. Click this link:</p>
-				<div class="alert alert-info" style="overflow:auto;"><a href="#" class = "addurl" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
-		</div>
+			</div>
 	</div>
 
 	<div class = "row">

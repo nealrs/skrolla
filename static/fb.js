@@ -65,7 +65,7 @@ function getURLs(){
 					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+' title="delete this item">delete</button></li>\n';
 					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+'" onclick = "removeURL(\''+username+'\',\''+snapshot.name()+'\')" title="delete this item">delete</button></li>\n';
 					
-					list += '<li style="margin-bottom:15px;"><a href="'+ modURL(item.url)+'" title = "'+ item.url+'">'+ truncateURL(item.url) +'</a>&nbsp;&nbsp;<a class="remURL" onclick = "removeURL(\''+snapshot.name()+'\')" title="remove URL"><button class="btn btn-danger btn-small pull-right "><i class="fa fa-fw fa-trash-o "></i></button></a></li>\n';
+					list += '<li style="margin-bottom:15px;"><a href="'+ modURL(item.url)+'" title = "'+ item.url+'">'+ truncateURL(item.url) +'</a>&nbsp;&nbsp;<a class="remURL" onclick = "removeURL(\''+snapshot.name()+'\')" title="remove URL"><button class="btn btn-danger btn-small pull-right ">&mdash;</button></a></li>\n';
 				});	
 				
 				console.log(list);	

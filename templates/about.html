@@ -20,19 +20,17 @@
 
 	<div class = "row ">
 		<div class="span8 offset2">
-			<p>Skrolla is a mobile webapp that uses the accelerometer in your phone to <a href="{{ url_for('view') }}nealshyam.com" title = "Skrolla Demo" target="_blank">scroll web pages up and down.</a> The 'trigger zones' are illustrated below.</p>
+			<p>Skrolla uses your phone's accelerometer to <a href="{{ url_for('view') }}nealshyam.com" title = "Skrolla Demo" target="_blank">scroll web pages up and down.</a> When you tip the phone towards you, it should scroll up and vice versa. The 'trigger zones' are illustrated below.</p>
 			
 			<p><img class ="" src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png"></p>
-
-			<p>Once <a href="{{ url_for('landing') }}" title="sign in with Twitter" target="_blank">signed in</a>, you can add links to your reading list and access them in the Skrolla viewer on your phone.</p>
 			
-			<p>Unfortunately, any domains with CORS / some-origin restrictions is going to fail (pretty much everything from google & github).</p>
+			<p>Unfortunately, any domains with CORS / same-origin restrictions is going to fail (pretty much everything from google & github).</p>
 
 			<p>The proof of concept was a fun hack using <a href="https://github.com/tomgco/gyro.js" title = "gyro.js" target="_blank">gyro.js</a> for <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" title = "issue 6 of Git@Me" target="_blank">Git@Me</a>. Later, I incorporated <a href="https://github.com/shokai/xframe.js" title="xframe.js" target="_blank">xframe.js</a> to control scrolling in the embedded iframe.</p>
 			
-			<p>I'm still playing with the code and I'd love to get your <a href="mailto:me@nealshyam.com?subject=skrolla" title = "send me your feedback" target="_blank">feedback</a>. Thanks!</p> 
+			<p>I'm still working on the code and I'd love to get your <a href="mailto:me@nealshyam.com?subject=skrolla" title = "send me your feedback" target="_blank">feedback</a>. Thanks!</p> 
 			
-			<p>Skrolla is built with Flask, Python, Firebase, JavaScript, OAuth, and jQuery.</p>
+			<p>Skrolla is built with Flask, Python, Bootstrap, Font Awesome, Firebase, JavaScript, OAuth, jQuery, and very little sleep.</p>
 
 		</div>
 	</div>

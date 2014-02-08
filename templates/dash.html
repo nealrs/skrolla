@@ -8,9 +8,9 @@
 	
 	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="{{url_for('static', filename='auth_land.js') }}"></script>
+	<script src="{{url_for('static', filename='ready.js') }}"></script>
 	<script src="{{url_for('static', filename='fb.js') }}"></script>
-		
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
 	<script>
@@ -26,34 +26,41 @@
 <body style = "margin:auto; background-color:#F2F2F2;">
 	<div class = "row ">
 		<div class="span8 offset2" >
-			<h4 style="color:#7D0552;">Skrolla</h4>
+			<h4 style="color:#7D0552;">Skrolla <a style="text-decoration:none;" href="{{ url_for('logout') }}"><button class="btn btn-inverse btn-small pull-right"><i class="fa fa-fw fa-sign-out"></i> Sign out</button></a> <a style="text-decoration:none;" href="{{ url_for('about') }}">&nbsp;<button class="btn btn-small pull-right" style="margin-right:10;"><i class="fa fa-fw fa-question-circle"></i> About</button></a></h4>
 		</div>
+		
 	</div>
 
 	<div class = "row ">
 		<div class="span4 offset2 hidden-phone">
-			<p>Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more here.</a></p>
+			<p>Scroll by tilting your phone. <a href="{{ url_for('about') }}" target="_blank" title = "Learn more about Skrolla">Learn more here.</a></p>
 			<img src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png">
 		</div>
 		
 		<div class="span4 ">
-			<p><span id = "greeting"></span>&nbsp;<a href="{{ url_for('logout') }}" title="logout :(">[logout]</a></p>
+			<strong><p><span id = "greeting"></span></p></strong>
 		
-			<strong><p id = "list_status">Your reading list:</p></strong>
+			<p>Add links:</p>
+			<div class="input-append">
+				<input class="input-block-level geturl" type="url" placeholder="http://disney.com">
+				<button class="btn btn-primary addurl" type="submit">Go!</button>
+			</div>		
+		
+			<p id = "list_status">Read:</p>
 			<div id = "list"></div>
 				
-			<p>Add a new URL:</p>
+			<!---<p>Add a new link:</p>
 			<div class="input-append">
-				<input class="input-block-level" type="url" id = "auth_add_url" placeholder="http://disney.com">
-				<button class="btn btn-primary" type="submit" id = "auth_add_button">Go!</button>
+				<input class="input-block-level geturl" type="url" placeholder="http://disney.com">
+				<button class="btn btn-primary addurl" type="submit">Go!</button>
 			</div>
-		</div>
+		</div>--->
 		
 	</div>
 
 	<div class = "row">
 		<div class="span8 offset2" >
-			&copy; 2013 <!--<a href="http://skrol.la">Skrolla</a> & --><a href="http://nealshyam.com">Neal Shyam</a>
+			&copy; 2014 <a href="http://nealshyam.com">Neal Shyam</a>
 		</div>
 	</div> 
 </body>

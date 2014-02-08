@@ -7,7 +7,6 @@ from os import environ
 
 ######
 app = Flask(__name__)
-
 app.secret_key = 'development'
 oauth = OAuth(app)
 twitter = oauth.remote_app(
@@ -27,16 +26,11 @@ def get_twitter_token():
         resp = session['twitter_oauth']
         return resp['oauth_token'], resp['oauth_token_secret']
 
-
 @app.before_request
 def before_request():
     g.user = None
     if 'twitter_oauth' in session:
         g.user = session['twitter_oauth']
-        print (g.user)
-        # g.u2.name = g.user.screen_name
-        # g.u2.id = 'x'
-######
 
 # bit.ly credentials
 btly_user = 'o_mrpi7r3qb'
@@ -51,9 +45,13 @@ def bitly(url):
 @app.route('/')
 def landing():
 	if g.user is not None:
-		return render_template('landing.html')
+		return render_template('dash.html')
 	else:
-		return render_template('auth.html')
+		return render_template('anon.html')
+
+@app.route('/about')
+def about():
+	return render_template('about.html')
 	
 @app.route('/login')
 def login():

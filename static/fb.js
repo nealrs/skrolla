@@ -1,6 +1,9 @@
 // define firebase paths (this should all really be in a different file, hunh?)
-var fbBase = 'https://nrst1.firebaseio.com/';
+//var fbBase = 'https://nrst1.firebaseio.com/';
+var fbBase = 'https://skrolla.firebaseio.com/';
 var fbUsersBase = fbBase+'users/';
+
+// user methods
 
 // create new user 
 function newUser(){
@@ -8,7 +11,7 @@ function newUser(){
 	newUserRef.update({date_created : Firebase.ServerValue.TIMESTAMP, id : authorizedUserId});
 	
 	// when creating a new user, populate their reading list with a dummy / about URL
-	addURL('http://nealshyam.com/#aboutSkrolla');
+	addURL('http://35d8941f.ngrok.com/about');
 }
 
 // check if authorized login corresponds to an existing user - if not, create it.
@@ -34,8 +37,9 @@ function greetUser(flag){
 	getURLs();	
 }
 
-// methods for getting URLs / list stuff for a particular user
+// URL & list methods
 
+// addURL
 function addURL(url){
 	var listRef = new Firebase(fbUsersBase+authorizedUser+'/list');
 	var pushRef = listRef.push();
@@ -46,13 +50,14 @@ function addURL(url){
 	}, onComplete);
 }
 
+// get & list URLs for reading list
 function getURLs(){
 	var listRef = new Firebase(fbUsersBase+authorizedUser+'/list');
 	var list = '<ul>\n';
 	
 	listRef.on('value', function(snapshot) {
 		if(snapshot.val() === null) {
-			console.log('empty reading list');
+			console.log('reading list is empty');
 			$('#list_status').html("Your reading list is empty.");
 		} else {				
 				listRef.on('child_added', function(snapshot) {
@@ -60,7 +65,7 @@ function getURLs(){
 					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+' title="delete this item">delete</button></li>\n';
 					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+'" onclick = "removeURL(\''+username+'\',\''+snapshot.name()+'\')" title="delete this item">delete</button></li>\n';
 					
-					list += '<li><a href="'+ modURL(item.url)+'" title = "'+ item.url+'">'+ truncateURL(item.url) +'</a>&nbsp;&nbsp;<a class="remURL" onclick = "removeURL(\''+snapshot.name()+'\')" title="remove URL"><i class="fa fa-fw fa-trash-o pull-right" style = "margin-top: 3px;"></i></a></li>\n';
+					list += '<li style="margin-bottom:15px;"><a href="'+ modURL(item.url)+'" title = "'+ item.url+'">'+ truncateURL(item.url) +'</a>&nbsp;&nbsp;<a class="remURL" onclick = "removeURL(\''+snapshot.name()+'\')" title="remove URL"><button class="btn btn-danger btn-small pull-right "><i class="fa fa-fw fa-trash-o "></i></button></a></li>\n';
 				});	
 				
 				console.log(list);	
@@ -69,6 +74,7 @@ function getURLs(){
 	});
 }
 
+// delete URL form list 
 function removeURL(refName){
 	var listRef = new Firebase(fbUsersBase+authorizedUser+'/list');
 	var ref = listRef.child(refName);
@@ -76,6 +82,7 @@ function removeURL(refName){
 	ref.remove(onComplete);
 }
 
+// on complete callback for debugging.
 var onComplete = function(error) {
   if (error)
     console.log('op failed.');
@@ -83,13 +90,15 @@ var onComplete = function(error) {
   	console.log('op successful.');
 };
 
-
+// add /view/ path prefix
 function modURL(url){
-	var newURL= 'http://localhost:5000/view/'+ url.replace(/^(https?:\/\/)?/,'')
+	var newURL= 'view/' + url.replace(/^(https?:\/\/)?/,'');
 	return newURL;
 }
 
+// truncate long URLs
 function truncateURL(url){	
+	url = url.replace(/^(https?:\/\/)?/,'');
 	if ( url.length > 35 ){
 		url = url.substring(0,34)+'...';
 	}

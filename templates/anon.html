@@ -8,30 +8,26 @@
   
   <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="{{url_for('static', filename='auth_land.js') }}"></script>
+	<script src="{{url_for('static', filename='ready.js') }}"></script>
 	<script src="{{url_for('static', filename='fb.js') }}"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
-	<script>
-		//$(document).ready(function() {
-			// for users that aren't logged in, let's log their activity as "anon"
-			var authorizedUser = 'anon';
-		
-		//});
+	<script> 	// for users that aren't logged in, let's log their activity as "anon"
+		var authorizedUser = 'anon'; 
 	</script>
 </head>
 
 <body style = "margin:auto; background-color:#F2F2F2;">
 	<div class = "row ">
 		<div class="span8 offset2" >
-			<h4 style="color:#7D0552;">Skrolla</h4>
+			<h4 style="color:#7D0552;">Skrolla <a style="text-decoration:none;" href="{{ url_for('about') }}">&nbsp;<button class="btn btn-small pull-right"><i class="fa fa-fw fa-question-circle"></i> About</button></a></h4>
 		</div>
 	</div>
 	
 	<div class = "row ">
 		<div class="span4 offset2">
-			<p>Scroll by tilting your phone. <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>
+			<p>Scroll by tilting your phone. <a href="{{ url_for('about') }}" target="_blank" title = "Learn more about Skrolla">Learn more.</a></p>
 			<img class ="hidden-phone" src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png">
 		</div>
 		
@@ -40,16 +36,16 @@
 		
 			<p><strong>Or go for a test drive:</strong></p>
 				<p>1. Enter a URL:</p>
-				<input class = "input-block-level" type="url" id = "url" placeholder="http://disney.com">
+				<input class = "input-block-level geturl" type="url" id = "url" placeholder="http://disney.com">
 	
 				<p>2. Click this link:</p>
-				<div class="alert alert-info" style="overflow:auto;"><a href="#" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
+				<div class="alert alert-info" style="overflow:auto;"><a href="#" class = "addurl" id = "link" target="_blank" title="Skroll-away!">&nbsp;</a></div>
 		</div>
 	</div>
 
 	<div class = "row">
 		<div class="span8 offset2" >
-			&copy; 2013 <!--<a href="http://skrol.la">Skrolla</a> & --><a href="http://nealshyam.com">Neal Shyam</a>
+			&copy; 2014 <a href="http://nealshyam.com">Neal Shyam</a>
 		</div>
 	</div> 
 </body>

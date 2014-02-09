@@ -14,30 +14,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
 	<script>	// for users that are logged in, let's set our 'authorized user' property so we can correctly address them via firebase.
-		var authorizedUser = '{{ g.user.screen_name }}';
-		var authorizedUserId = '{{ g.user.user_id }}';
-		var pURL = "{{ path }}";
+		//var authorizedUser = '{{ g.user.screen_name }}';
+		//var authorizedUserId = '{{ g.user.user_id }}';
+		//var pURL = "{{ g.tmp }}";
 		
-		// check & greet user
-		checkUser();
+		//// check & greet user
+		//checkUser();
 	</script>
 </head>
 
 <body style = "margin:auto; background-color:#F2F2F2;">
 	<div class = "row ">
 		<div class="span8 offset2" >
-			<h4 style="color:#7D0552;">Skrolla <a style="text-decoration:none;" href="{{ url_for('logout') }}"><button class="btn btn-inverse btn-small pull-right"><i class="fa fa-fw fa-sign-out"></i> Sign out</button></a> <a style="text-decoration:none;" href="{{ url_for('about') }}">&nbsp;<button class="btn btn-small pull-right" style="margin-right:10;"><i class="fa fa-fw fa-question-circle"></i> About</button></a></h4>
+			<h4 style="color:#7D0552;">Skrolla <a style="text-decoration:none;" href="{{ url_for('about') }}">&nbsp;<button class="btn btn-small pull-right"><i class="fa fa-fw fa-question-circle"></i> About</button></a></h4>
 		</div>
-		
 	</div>
 
 	<div class = "row ">
-		<div class="span8 offset2 ">
-			<strong><p><span id = "greeting"></span></p></strong>
-		
-			<p>May we add this to your reading list?</p>
-			<div class="alert alert-info exturl" style="overflow:hidden; !important">{{ path }}</div>
-			<button class="btn btn-primary btn-block exturl_button">yes!</button><br/>
+		<div class="span8 offset2 ">		
+			<p>Please sign to continue.</p>
+			<p><a style="text-decoration:none;" href="{{ url_for('login') }}"><button class="btn btn-primary btn-block"><i class="fa fa-fw fa-twitter"></i> Sign in with Twitter</button></a><p>
 	</div>
 
 	<div class = "row">

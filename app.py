@@ -12,7 +12,6 @@ twitter = oauth.remote_app(
     'twitter',
     consumer_key='fQIeAvlVlMH5o5Z61hEI1Q',
     consumer_secret='mH8loyXopwa1hdUe1SRfflSbEemwFcED93AEJry9U',
-    
     base_url='https://api.twitter.com/1.1/',
     request_token_url='https://api.twitter.com/oauth/request_token',
     access_token_url='https://api.twitter.com/oauth/access_token',
@@ -35,6 +34,7 @@ def before_request():
 def landing():
 	if g.user is not None:
 		return render_template('dash.html')
+		#print g.user
 	else:
 		return render_template('anon.html')
 
@@ -67,7 +67,6 @@ def view(path=None):
 	if (path==''):
 		return redirect(url_for('landing'))
 	else:
-		
 		# find http:// | https:// and remove it
 		# replace w/ http via javascript - but, this does break https & still fails on CORS problems 
 		path = re.sub(r'^(https?:\/\/)?', '', path)
@@ -75,15 +74,17 @@ def view(path=None):
 		
 @app.route('/ext/', defaults={'path': ''})
 @app.route('/ext/<path:path>')
-def ext(path=None):
+def extension(path=None):
 	path = re.sub(r'^(https?:\/\/)?', '', path)
-	
 	if g.user is not None:
 		return render_template('ext.html', path=path)
 	else:
-		return render_template('extlo.html', path=path)
-	
-		
+		return redirect(url_for('ext_auth'))
+
+@app.route('/ext_auth')		
+def ext_auth():
+	return render_template('extauth.html')	
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

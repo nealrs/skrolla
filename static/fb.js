@@ -1,5 +1,4 @@
 // define firebase paths (this should all really be in a different file, hunh?)
-//var fbBase = 'https://nrst1.firebaseio.com/';
 var fbBase = 'https://skrolla.firebaseio.com/';
 var fbUsersBase = fbBase+'users/';
 
@@ -11,7 +10,7 @@ function newUser(){
 	newUserRef.update({date_created : Firebase.ServerValue.TIMESTAMP, id : authorizedUserId});
 	
 	// when creating a new user, populate their reading list with a dummy / about URL
-	addURL('http://35d8941f.ngrok.com/about');
+	addURL('http://dev.skrol.la/about');
 }
 
 // check if authorized login corresponds to an existing user - if not, create it.

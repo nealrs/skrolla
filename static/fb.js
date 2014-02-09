@@ -7,7 +7,7 @@ var fbUsersBase = fbBase+'users/';
 // create new user 
 function newUser(){
 	var newUserRef = new Firebase(fbUsersBase+authorizedUser);
-	newUserRef.update({date_created : Firebase.ServerValue.TIMESTAMP, id : authorizedUserId});
+	newUserRef.setWithPriority({date_created : Firebase.ServerValue.TIMESTAMP, id : authorizedUserId}, Firebase.ServerValue.TIMESTAMP);
 	
 	// when creating a new user, populate their reading list with a dummy / about URL
 	addURL('http://dev.skrol.la/about');
@@ -16,7 +16,7 @@ function newUser(){
 // check if authorized login corresponds to an existing user - if not, create it.
 function checkUser(){
 	var userRef = new Firebase(fbUsersBase+authorizedUser);
-	userRef.on('value', function(snapshot) {
+	userRef.once('value', function(snapshot) {
 		
 		if(snapshot.val() === null) {
 			console.log('User '+authorizedUser+' does not exist. creating now!');
@@ -28,7 +28,7 @@ function checkUser(){
 
 // greet returning & new users differently
 function greetUser(flag){	
-	if (flag == 0){
+	if (flag === 0){
 		$('#greeting').html('Welcome back @'+authorizedUser+'!');
 	} else { 
 			$('#greeting').html('Thanks for joining us @'+authorizedUser+'!'); 
@@ -102,4 +102,16 @@ function truncateURL(url){
 		url = url.substring(0,34)+'...';
 	}
 	return url; 
+}
+
+function getpriority(){
+	var userRef = new Firebase(fbUsersBase);
+	userRef.once('value', function(snapshot) {
+		var x = snapshot.val();
+		var y = snapshot.getPriority();
+		
+		console.log(x);
+		console.log(y);
+	});
+	
 }

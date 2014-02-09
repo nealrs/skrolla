@@ -1,5 +1,4 @@
 import sys
-import bitlyapi
 import re
 from flask import Flask, render_template, url_for, redirect, request, g, session, flash
 from flask_oauthlib.client import OAuth
@@ -31,16 +30,6 @@ def before_request():
     g.user = None
     if 'twitter_oauth' in session:
         g.user = session['twitter_oauth']
-
-# bit.ly credentials
-btly_user = 'o_mrpi7r3qb'
-btly_key ='R_39770af704cc31c0c526191109214e79'
-
-# bit.ly shortening
-def bitly(url):	
-	b = bitlyapi.BitLy(btly_user, btly_key)
-	shortURL = b.shorten(longUrl=url)
-	return shortURL['url']
 
 @app.route('/')
 def landing():

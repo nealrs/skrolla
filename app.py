@@ -87,9 +87,13 @@ def view(path=None):
 @app.route('/ext/', defaults={'path': ''})
 @app.route('/ext/<path:path>')
 def ext(path=None):
-  #callback_url = url_for('oauthorized', next=request.args.get('next'))
 	path = re.sub(r'^(https?:\/\/)?', '', path)
-	return render_template('ext.html', path=path)
+	
+	if g.user is not None:
+		return render_template('ext.html', path=path)
+	else:
+		return render_template('extlo.html', path=path)
+	
 		
 if __name__ == '__main__':
     app.debug = True

@@ -14,12 +14,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	
 	<script>
-			// for users that are logged in, let's set our 'authorized user' property so we can correctly address them via firebase.
-			var authorizedUser = '{{ g.user.screen_name }}';
-			var authorizedUserId = '{{ g.user.user_id }}';
+		// for users that are logged in, let's set our 'authorized user' property so we can correctly address them via firebase.
+		var authorizedUser = '{{ g.user.screen_name }}';
+		var authorizedUserId = '{{ g.user.user_id }}';
 			
-			// check if user is new & refresh URL list
-			checkUser();
+		// check if user is new & refresh URL list
+		checkUser();
 	</script>	
 </head>
 

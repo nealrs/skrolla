@@ -1,9 +1,7 @@
 // Called when the url of a tab changes.
 function checkForValidUrl(tabId, changeInfo, tab) {
   if (tab.url) {
-    // ... show the page action.
-    chrome.pageAction.show(tabId);
-    
+    chrome.pageAction.show(tabId);    
     //alert(tab.url);
   }
 };
@@ -11,4 +9,3 @@ function checkForValidUrl(tabId, changeInfo, tab) {
 // Listen for any changes to the URL of any tab.
 chrome.tabs.onUpdated.addListener(checkForValidUrl);
 chrome.tabs.onActivated.addListener(checkForValidUrl);
-//chrome.extension.onRequest.addListener(checkForValidUrl);

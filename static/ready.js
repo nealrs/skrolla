@@ -15,4 +15,15 @@ $(document).ready(function() {
 	   	 	}
     }
   });
+  
+  // trigger addURL onclick for ext/ route
+  $('.exturl_button').click(function(){
+  	addURL( pURL );
+  	
+  	// remove class, add class, change text, hide button.
+  	$('.exturl').removeClass( 'alert-info' ).addClass( 'alert-success' ).html('Awesome, you\'re all set!');
+  	$('.exturl_button').hide();
+  	
+  });
+  
 });

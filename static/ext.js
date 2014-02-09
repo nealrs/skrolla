@@ -1,4 +1,4 @@
-//Firebase.enableLogging(true);
+Firebase.enableLogging(true);
 
 // define firebase paths (this should all really be in a different file, hunh?)
 var fbBase = 'https://nrst1.firebaseio.com/'; // make sure to change firebase + permissions in forge!!!!!

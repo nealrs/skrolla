@@ -84,6 +84,12 @@ def view(path=None):
 		path = re.sub(r'^(https?:\/\/)?', '', path)
 		return render_template('view.html', path=path)
 		
+@app.route('/ext/', defaults={'path': ''})
+@app.route('/ext/<path:path>')
+def ext(path=None):
+  #callback_url = url_for('oauthorized', next=request.args.get('next'))
+	return render_template('ext.html', path=path)
+		
 if __name__ == '__main__':
     app.debug = True
     app.run()

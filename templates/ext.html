@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Skrolla</title>
+	<meta name="description" content="Save links from your browser to your Skrolla reading list">
+	<meta name="author" content="Neal Shyam">
+		
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="{{url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
+	<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.2.3/firebase-simple-login.js'></script>
+	<script src="https://gam.s3.amazonaws.com/cdn/skrolla/skrolla_ext.js"></script>
+	<script src="{{url_for('static', filename='ext.js') }}"></script>
+	
+	<script type="text/javascript">var pURL = "{{ path }}";</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	<style type="text/css">
+		#greeting {display:none;}
+		#auth {}
+		#list {}
+		.auth_status{display:none;}
+		.auth_login {	}
+		.auth_logout {}
+		.auth_button{}
+		.user_name {}
+		.add_button {}
+		
+	</style>
+</head>
+
+<body>
+	<h2>Skrolla</h2>
+	<div id = "auth">
+		<span class = "auth_status"></span>
+		<button class = "auth_button auth_login">sign in with twitter</button>
+		<button class = "auth_button auth_logout" style="display:none;">sign out</button>
+	</div>
+	
+	<div id = "greeting">
+		<p>Hi @<span class = "user_name"></span>!<p>
+		<p>Would you like to add the page you're reading to your reading list?</p>
+		<button class = "add_button">yes</button>
+	</div>
+</body>
+
+</div>

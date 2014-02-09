@@ -1,0 +1,13 @@
+{
+  "name": "Skrolla",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Save links from your browser to your Skrolla reading list",
+  "homepage_url": "https://dev.skrol.la",
+  "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "add to Skroll",
+    "default_popup": "pop.html"
+  }
+}

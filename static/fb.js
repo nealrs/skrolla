@@ -16,25 +16,24 @@ function newUser(){
 // check if authorized login corresponds to an existing user - if not, create it.
 function checkUser(){
 	var userRef = new Firebase(fbUsersBase+authorizedUser);
-	userRef.once('value', function(snapshot) {
+	userRef.on('value', function(snapshot) {
 		
 		if(snapshot.val() === null) {
 			console.log('User '+authorizedUser+' does not exist. creating now!');
 			newUser();
-			greetUser(1);
-		} else { greetUser(0); }
+		}
+		//greetUser();
+		getURLs();
 	});
 }
 
+/*
 // greet returning & new users differently
-function greetUser(flag){	
-	if (flag === 0){
-		$('#greeting').html('Welcome back @'+authorizedUser+'!');
-	} else { 
-			$('#greeting').html('Thanks for joining us @'+authorizedUser+'!'); 
-		}
+function greetUser(){	
+	$('#greeting').html('Hi @'+authorizedUser+'!');
 	getURLs();	
 }
+*/
 
 // URL & list methods
 
@@ -62,7 +61,6 @@ function getURLs(){
 				listRef.on('child_added', function(snapshot) {
 					var item = snapshot.val();
 					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+' title="delete this item">delete</button></li>\n';
-					//list += '<li><a href="'+ item.url+'">'+ item.url +'</a>&nbsp;&nbsp;<button class="remURL" id = "'+username+'___'+snapshot.name()+'" onclick = "removeURL(\''+username+'\',\''+snapshot.name()+'\')" title="delete this item">delete</button></li>\n';
 					
 					list += '<li style="margin-bottom:15px;"><a href="'+ modURL(item.url)+'" title = "'+ item.url+'">'+ truncateURL(item.url) +'</a>&nbsp;&nbsp;<a class="remURL" onclick = "removeURL(\''+snapshot.name()+'\')" title="remove URL"><button class="btn btn-danger btn-small pull-right ">&mdash;</button></a></li>\n';
 				});	
@@ -102,16 +100,4 @@ function truncateURL(url){
 		url = url.substring(0,34)+'...';
 	}
 	return url; 
-}
-
-function getpriority(){
-	var userRef = new Firebase(fbUsersBase);
-	userRef.once('value', function(snapshot) {
-		var x = snapshot.val();
-		var y = snapshot.getPriority();
-		
-		console.log(x);
-		console.log(y);
-	});
-	
 }

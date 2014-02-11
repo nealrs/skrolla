@@ -1,31 +1,21 @@
 {
   "name": "Skrolla",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "description": "Save links from your browser to your Skrolla reading list",
-  "background" : {
-    "scripts": ["background.js"]
+  "description": "Save links to your Skrolla reading list",
+  "version": "0.0.2",
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
   },
-  "homepage_url": "https://dev.skrol.la",
-  "permissions": [ "tabs", "http://*/*", "https://*/*" ],
   "page_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "add to Skroll",
-    "default_popup": "pop.html"
+    "default_title": "Add to Skrolla"
   },
-  "content_scripts" : [
-    {
-      "matches" : [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js" : ["pop.js"],
-      "run_at" : "document_idle",
-      "all_frames" : false
-    }
-  ],
   "icons" : {
     "48" : "icons/icon48.png",
     "128" : "icons/icon128.png"
-  }
+  },
+  "manifest_version": 2
 }

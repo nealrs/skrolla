@@ -7,6 +7,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="{{url_for('static', filename='instantclick.min.js') }}" data-no-instant></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 </head>
@@ -24,7 +25,7 @@
 			
 			<p><img class ="" src="http://gam.s3.amazonaws.com/img/issue_6_fig_1.png"></p>
 			
-			<p>Unfortunately, any domains with CORS / same-origin restrictions is going to fail (pretty much everything from google & github).</p>
+			<p>Unfortunately, any domains with CORS / same-origin restrictions are going to fail (pretty much everything from google & github).</p>
 
 			<p>The proof of concept was a fun hack using <a href="https://github.com/tomgco/gyro.js" title = "gyro.js" target="_blank">gyro.js</a> for <a href="http://gitat.me/2013/10/10/Tilt-O-Scroll.html" title = "issue 6 of Git@Me" target="_blank">Git@Me</a>. Later, I incorporated <a href="https://github.com/shokai/xframe.js" title="xframe.js" target="_blank">xframe.js</a> to control scrolling in the embedded iframe.</p>
 			

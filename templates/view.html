@@ -11,6 +11,8 @@
 	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'></script>
 	<script src="{{url_for('static', filename='fb.js') }}"></script>
+	<script src="{{url_for('static', filename='quo.js') }}"></script>
+	<script src="{{url_for('static', filename='verge.min.js') }}"></script>
 
 	<script type="text/javascript">url = "http://{{ path }}";</script>
 
@@ -34,7 +36,8 @@
 			<span class="pointer active" onclick="lshare()"><i class="fa fa-linkedin fa-fw"></i></span>&nbsp; &nbsp;
 			<span class="pointer active" onclick="eshare()"><i class="fa fa-envelope fa-fw"></i></span>
 		</div>
-	</div>
+	</div>	
 	<div id="frame"></div>
+	<div id="overlay"><span id = "overicon"></span></div>
 </body>
 </html>

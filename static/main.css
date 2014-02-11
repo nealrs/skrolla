@@ -1,5 +1,6 @@
 body {
 	margin:auto;
+	position:relative;
 }
 
 .sHead {
@@ -40,4 +41,23 @@ body {
 	padding-top:40px; 
 	margin-left:0px; 
 	margin-right:0px;
+}
+
+#overlay {
+	position: fixed;
+	left:33%;
+	z-index: 999;
+	/*background: #000;*/
+	opacity: 0.8;
+	width:120px;
+	height:120px;
+	border-radius: 15px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+#overicon{
+	color:#7D0552;
+	text-align:center;
+	vertical-align:middle;
 }

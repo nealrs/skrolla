@@ -128,7 +128,28 @@ function changeOrientation(){ // thanks SO: http://stackoverflow.com/questions/5
 // xframe variables
 var xframe = null;
 
+function sizeOverlay() {
+	var overL = ( ( verge.viewportW() - 120 ) /2 ); // set X overlay offset to 1/3 of viewport width
+	var overT = ( ( verge.viewportH() - 120 ) /2 ); // set Y overlay offset to 1/3 of viewport height
+
+	$("#overlay").css("left", overL);
+	$("#overlay").css("top", overT);
+}
+
 $(function(){
+	// setup listener for overlay hold
+		$$('#overlay').on("hold",function() {		
+			if (scrollFlag == 0) {
+				$('#overicon').html("<i class='fa fa-arrows-v fa-fw fa-5x'></i>").fadeIn("fast").delay(1000).fadeOut("fast");
+				$('#scrollOn').show(); $('#scrollOff').hide(); scrollFlag = 1;
+			} else {
+					$('#overicon').html("<i class='fa fa-power-off fa-fw fa-5x'></i>").fadeIn("fast").delay(1000).fadeOut("fast");
+					$('#scrollOn').hide(); $('#scrollOff').show(); scrollFlag = 0;	
+				}
+		});
+
+	// initialize overlay & enable scrolling
+	sizeOverlay();
 	enableScroll();
 	
 	// xframe scrolling init

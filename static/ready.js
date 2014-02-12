@@ -12,6 +12,8 @@ $(document).ready(function() {
 	   }	else {
 	   			// if auth, (just .geturl) clear the input.
 	   			$('.geturl').val('');
+	   			document.activeElement.blur();
+	   			$('.geturl').blur(); // and remove focus (hide the keyboard) from the input field.
 	   	 	}
     }
   });
